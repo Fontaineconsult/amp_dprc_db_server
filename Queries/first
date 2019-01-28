@@ -1,0 +1,4 @@
+INSERT INTO student (student_id, student_first_name, student_last_name, student_email, student_requests) VALUES ('913678186', 'doofus', 'dingus', 'dingerdugg@flug.chub', 'likes phat ladies');
+INSERT INTO instructor (instructor_id, instructor_first_name, instructor_last_name, instructor_email, instructor_phone) VALUES ('123456789', 'gregggg', 'legggg', 'gell@gm.cem', '999922221');
+INSERT INTO course (course_gen_id, course_name, course_section, course_instructor_id, semester) VALUES ('fa18cad51001', 'CAD 510', '01', '123456789', 'Fall 2018')
+INSERT INTO association (course_id, student_id) VALUES ('fa18cad51001', '913678186')
