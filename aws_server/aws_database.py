@@ -14,6 +14,8 @@ class iLearn_Course(Base):
     course_name = Column(String)
     course_gen_id = Column(String)
     semester = Column(String)
+    no_students_enrolled = Column(Boolean)
+    date_added = Column(DateTime, default=datetime.utcnow)
     assigned_videos = relationship('iLearn_Video', backref='courses')
 
 
