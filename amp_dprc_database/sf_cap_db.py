@@ -235,6 +235,7 @@ class ScrapediLearnVideos(Base):
     course_ilearn_id = Column(String)
     course_gen_id = Column(String, ForeignKey("course.course_gen_id"))
     course = relationship(Course)
+    page_section = Column(String)
 
 
 

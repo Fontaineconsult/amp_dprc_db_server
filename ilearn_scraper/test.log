@@ -21,3 +21,177 @@
 2018-11-08 14:30:05,521: -------------------------
 2018-11-08 14:40:22,532: -------------------------
 2018-11-08 14:41:08,734: -------------------------
+2019-05-21 16:08:58,408: -------------------------
+2019-05-21 16:09:21,026: -------------------------
+2019-05-21 16:10:54,506: -------------------------
+2019-05-21 16:14:37,544: -------------------------
+2019-05-21 16:24:47,760: -------------------------
+2019-05-21 16:36:38,179: -------------------------
+2019-05-21 17:17:46,270: -------------------------
+2019-05-21 17:22:48,495: -------------------------
+2019-05-22 10:59:41,232: -------------------------
+2019-05-22 11:05:31,734: HEAD REQUEST: Failed to establish a new connection, Max Retries https://www.quantumbalancing.com/news/sugar_blues.htm Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 384, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 380, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 266, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 367, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 384, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 380, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 266, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\Box\Servers\amp_dprc_db_server\ilearn_scraper\request_functions.py", line 111, in get_resources_header
+    header = session.head(resource_url, verify=False)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 547, in head
+    return self.request('HEAD', url, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 495, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response',))
+
+2019-05-22 11:18:21,168: HEAD REQUEST: Failed to establish a new connection, Max Retries http://projectevemoms.com/childrens-books-why-kids-need-diverse-books/?utm_content=bufferfb6c3&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1026, in _send_output
+    self.send(msg)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 964, in send
+    self.connect()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001CBB1613D68>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='projectevemoms.com', port=80): Max retries exceeded with url: /childrens-books-why-kids-need-diverse-books/?utm_content=bufferfb6c3&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001CBB1613D68>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\Box\Servers\amp_dprc_db_server\ilearn_scraper\request_functions.py", line 111, in get_resources_header
+    header = session.head(resource_url, verify=False)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 547, in head
+    return self.request('HEAD', url, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='projectevemoms.com', port=80): Max retries exceeded with url: /childrens-books-why-kids-need-diverse-books/?utm_content=bufferfb6c3&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001CBB1613D68>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',))
+
+2019-05-22 11:21:36,341: HEAD REQUEST: Failed to establish a new connection, Max Retries https://www.onitube.com/video/46861 Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 343, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 849, in _validate_conn
+    conn.connect()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 314, in connect
+    conn = self._new_conn()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001CBB7456E80>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.onitube.com', port=443): Max retries exceeded with url: /video/46861 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001CBB7456E80>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\Box\Servers\amp_dprc_db_server\ilearn_scraper\request_functions.py", line 111, in get_resources_header
+    header = session.head(resource_url, verify=False)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 547, in head
+    return self.request('HEAD', url, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.onitube.com', port=443): Max retries exceeded with url: /video/46861 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001CBB7456E80>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it',))
+

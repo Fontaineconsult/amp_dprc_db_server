@@ -1,4 +1,4 @@
-import amp_dprc_dbase.dbase_functions as dbase_functions
+import amp_dprc_database.dbase_functions as dbase_functions
 import xlwt
 
 all_courses = dbase_functions.get_all_courses("sp19")

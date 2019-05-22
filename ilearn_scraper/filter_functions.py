@@ -355,28 +355,33 @@ def initial_resource_search(link):
         if header.status_code == 303 or header.status_code == 302 or header.status_code == 301:
 
             header_resource = header.headers['Location']
+            if header_resource is not None:
 
+                print("headresrouce", header_resource, type(header_resource))
 
-            if link_buffer(header_resource):
-                if regexs.check_valid_url(header_resource):
-                    link_type = regexs.identify_link(link)
-                    return link, 200, link_type
-                else:
-                    return None
-            bad_characters = ['#', '/']
-            if header_resource[-1] in bad_characters: # some sites return the same link in the Location area. This causes an infinite loop
-                if header_resource[:-1] == link:
+                if link_buffer(header_resource):
                     if regexs.check_valid_url(header_resource):
                         link_type = regexs.identify_link(link)
                         return link, 200, link_type
                     else:
                         return None
+                bad_characters = ['#', '/']
+                if header_resource[-1] in bad_characters: # some sites return the same link in the Location area. This causes an infinite loop
+                    if header_resource[:-1] == link:
+                        if regexs.check_valid_url(header_resource):
+                            link_type = regexs.identify_link(link)
+                            return link, 200, link_type
+                        else:
+                            return None
 
-            if regexs.check_valid_url(header_resource):
-                link_type = regexs.identify_link(header_resource)
-                return header_resource, header.status_code, link_type
+                if regexs.check_valid_url(header_resource):
+                    link_type = regexs.identify_link(header_resource)
+                    return header_resource, header.status_code, link_type
+                else:
+                    return None ##! log this
             else:
-                return None ##! log this
+                print("header returned as none REDIRECTED", header, link)
+                return None
 
         elif header.status_code == 200:
             link_type = regexs.identify_link(link)

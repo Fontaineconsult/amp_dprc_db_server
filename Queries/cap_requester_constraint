@@ -1,0 +1,6 @@
+-- Constraint: only_one
+
+-- ALTER TABLE dev_test.captioning_requester DROP CONSTRAINT only_one;
+
+ALTER TABLE dev_test.captioning_requester
+    ADD CONSTRAINT only_one CHECK (campus_association_id IS NULL AND course_id IS NOT NULL OR campus_association_id IS NOT NULL AND course_id IS NULL);

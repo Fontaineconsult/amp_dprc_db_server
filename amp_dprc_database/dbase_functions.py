@@ -361,7 +361,7 @@ def update_course_enrollement():
     drop_enrollment_from_diff_table()
 
 
-def add_scraped_videos(title, link, course_id, caption_state, course_gen_id):
+def add_scraped_videos(title, link, course_id, caption_state, course_gen_id, section):
 
     scraped_video_check = session.query(ScrapediLearnVideos).filter_by(resource_link=link).filter_by(course_gen_id=course_gen_id).first()
 
@@ -371,7 +371,8 @@ def add_scraped_videos(title, link, course_id, caption_state, course_gen_id):
                                              title=title,
                                              course_ilearn_id=course_id,
                                              captioned=caption_state,
-                                             course_gen_id=course_gen_id)
+                                             course_gen_id=course_gen_id,
+                                             page_section=section)
 
         session.add(video_resource)
         session.commit()
@@ -384,6 +385,9 @@ def add_scraped_videos(title, link, course_id, caption_state, course_gen_id):
             scraped_video_check.captioned = caption_state
         else:
             print("already exists")
+
+        if scraped_video_check.page_section is None:
+            scraped_video_check.page_section = section
 
         session.commit()
 

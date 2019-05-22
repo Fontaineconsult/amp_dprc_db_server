@@ -34,6 +34,7 @@ class iLearn_Video(Base):
     captioned_version_url = Column(String)
     course_id = Column(String, ForeignKey('courses.course_id'))
     course = relationship(iLearn_Course)
+    page_section = Column(String)
 
 
 def get_session():

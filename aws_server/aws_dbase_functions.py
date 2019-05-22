@@ -3,7 +3,7 @@ sys.path.append("/home/daniel/dev/py36-venv/dev")
 
 
 from aws_server.aws_database import get_session, iLearn_Video, iLearn_Course
-from amp_dprc_dbase.sf_cap_db import Course, get_dbase_session
+from amp_dprc_database.sf_cap_db import Course, get_dbase_session
 
 
 aws_session = get_session()
@@ -27,7 +27,7 @@ def check_or_commit_course(ilearn_page_id, course_name, course_gen_id, semester,
         aws_session.commit()
 
 
-def commit_ilearn_video_content(title, link, course_id, caption_state):
+def commit_ilearn_video_content(title, link, course_id, caption_state, section):
 
     resource_check = aws_session.query(iLearn_Video).filter_by(resource_link=link).filter_by(course_id=course_id).first()
 
@@ -36,7 +36,8 @@ def commit_ilearn_video_content(title, link, course_id, caption_state):
         video_resource = iLearn_Video(resource_link=link,
                                       title=title,
                                       course_id=course_id,
-                                      captioned=caption_state)
+                                      captioned=caption_state,
+                                      page_section=section)
 
         aws_session.add(video_resource)
         aws_session.commit()

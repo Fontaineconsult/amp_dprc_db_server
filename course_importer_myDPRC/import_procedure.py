@@ -1,8 +1,7 @@
 import csv
 import itertools
 
-from amp_dprc_dbase import dbase_functions
-
+from amp_dprc_database import dbase_functions
 
 course_enrollement_csv = "C:\\Users\\913678186\\Box\\SF State Python Projects\\DPRC AMP\\course_importer_myDPRC\\Courses.csv"
 course_list_csv = "C:\\Users\\913678186\\Box\\SF State Python Projects\\DPRC AMP\\course_importer_myDPRC\\Classlist.csv"
@@ -52,13 +51,13 @@ def import_all_courses():
             print(instructor_name, instructor_email, instructor_id)
 
             dbase_functions.commit_myDPRC_course_data(course_reg_number,
-                                                        subject_code,
-                                                        course_number,
-                                                        section_number,
-                                                        class_title,
-                                                        instructor_name,
-                                                        instructor_email,
-                                                        instructor_id)
+                                                      subject_code,
+                                                      course_number,
+                                                      section_number,
+                                                      class_title,
+                                                      instructor_name,
+                                                      instructor_email,
+                                                      instructor_id)
 
 
 

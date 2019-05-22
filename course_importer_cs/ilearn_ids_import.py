@@ -1,5 +1,5 @@
 import csv
-import amp_dprc_dbase.dbase_functions as db
+import amp_dprc_database.dbase_functions as db
 
 csv_link = "C:\\Users\\913678186\\Box\\SF State Python Projects\\DPRC AMP\\course_importer_cs\\courseids.csv"
 

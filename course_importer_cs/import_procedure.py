@@ -2,7 +2,7 @@ import sys
 
 sys.path.append("/home/daniel/dev/py36-venv/dev")
 
-import amp_dprc_dbase.dbase_functions as db
+import amp_dprc_database.dbase_functions as db
 from course_importer_cs.course_importer_classes import CourseList
 import os
 
