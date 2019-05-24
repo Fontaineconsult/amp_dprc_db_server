@@ -214,7 +214,7 @@ def get_section_content(page_html):
     n = 0
 
     for section_content in page_html.findAll(id=re.compile("section-*\d")):
-        section_id = "Section-" + str(n)
+        section_id = 0
         section_classes.append((section_content, section_id))
         n = n + 1
     return section_classes
