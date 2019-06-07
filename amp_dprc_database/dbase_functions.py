@@ -1,8 +1,8 @@
 import sys
 sys.path.append("/home/daniel/dev/py36-venv/dev")
 
-from amp_dprc_database.sf_cap_db import get_dbase_session,\
-    Student, Instructor, Course, Enrollment,\
+from amp_dprc_database.sf_cap_db_v2 import get_dbase_session,\
+    Student, Employee, Course, Enrollment,\
     CourseIlearnID, myDPRCStudentEnrollemet, myDPRCRawCourseList,\
     CaptionStudentCoursesView, DroppedCoursesDiffView,\
     ScrapediLearnVideos
@@ -43,14 +43,14 @@ def get_all_students_ids():
 def check_or_commit_instructor(instructor_data):
 
     try:
-        instructor_query = session.query(Instructor).filter_by(instructor_id=instructor_data["instructor_id"]).one()
+        instructor_query = session.query(Employee).filter_by(instructor_id=instructor_data["instructor_id"]).one()
         print("already found instructor")
     except db_error.NoResultFound:
-        new_instructor = Instructor(instructor_id=instructor_data["instructor_id"],
-                                        instructor_first_name=instructor_data["instructor_first_name"],
-                                        instructor_last_name=instructor_data["instructor_last_name"],
-                                        instructor_email=instructor_data["instructor_email"],
-                                        instructor_phone=instructor_data["instructor_phone"])
+        new_instructor = Employee(employee_id=instructor_data["instructor_id"],
+                                        employee_first_name=instructor_data["instructor_first_name"],
+                                        employee_last_name=instructor_data["instructor_last_name"],
+                                        employee_email=instructor_data["instructor_email"],
+                                        employee_phone=instructor_data["instructor_phone"])
 
         try:
             session.add(new_instructor)
@@ -70,7 +70,7 @@ def check_or_commit_course(course_data):
         new_course = Course(course_gen_id=course_data["course_gen_id"],
                             course_name=course_data["course_name"],
                             course_section=course_data["course_section"],
-                            course_instructor_id=course_data["course_instructor_id"],
+                            employee_id=course_data["course_instructor_id"],
                             semester=course_data["semester"],
                             course_online=course_data["course_online"],
                             import_date=datetime.datetime.utcnow()
@@ -211,15 +211,15 @@ def refresh_instructor_table():
     for each in query:
             if len(each.instructor_id) == 9:
                 try:
-                    check_if_instructor_exists = session.query(Instructor).filter_by(instructor_id=each.instructor_id).one()
+                    check_if_instructor_exists = session.query(Employee).filter_by(employee_id=each.instructor_id).one()
 
                 except db_error.NoResultFound:
 
-                    new_instructor = Instructor(instructor_id=each.instructor_id,
-                                                instructor_first_name=each.instructor_name.split(" ", 1)[0],
-                                                instructor_last_name=each.instructor_name.split(" ", 1)[1],
-                                                instructor_email=each.instructor_email,
-                                                instructor_phone=""
+                    new_instructor = Employee(employee_id=each.instructor_id,
+                                              employee_first_name=each.instructor_name.split(" ", 1)[0],
+                                              employee_last_name=each.instructor_name.split(" ", 1)[1],
+                                              employee_email=each.instructor_email,
+                                              employee_phone=""
                                                 )
                     session.add(new_instructor)
                     session.commit()
@@ -242,7 +242,7 @@ def add_courses_to_course_table():
                 new_course = Course(course_gen_id=each.course_gen_key,
                                     course_name="{}{}{}".format(each.subject_code, " ", each.course_number),
                                     course_section=each.section_number,
-                                    course_instructor_id=each.instructor_id,
+                                    employee_id=each.instructor_id,
                                     ##! CAREFUL. THIS NEEDS TO BE GLOBAL
                                     semester="sp19",
                                     import_date=datetime.datetime.utcnow(),
