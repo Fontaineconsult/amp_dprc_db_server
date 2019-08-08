@@ -180,6 +180,7 @@ def commit_myDPRC_student_enrollement(student_id, course_id):
 
 
 def commit_myDPRC_course_data(course_regestration_number,
+                              term_code,
                               subject_code,
                               course_number,
                               section_number,
@@ -191,6 +192,7 @@ def commit_myDPRC_course_data(course_regestration_number,
 
 
     course = myDPRCRawCourseList(course_regestration_number=course_regestration_number,
+                                 term_code=term_code,
                                  subject_code=subject_code,
                                  course_number=course_number,
                                  section_number=section_number,
@@ -227,7 +229,7 @@ def refresh_instructor_table():
                 continue
 
 
-def add_courses_to_course_table():
+def add_courses_to_course_table(semester):
 
     query = session.query(CaptionStudentCoursesView).all()
     print(query)
@@ -243,8 +245,7 @@ def add_courses_to_course_table():
                                     course_name="{}{}{}".format(each.subject_code, " ", each.course_number),
                                     course_section=each.section_number,
                                     employee_id=each.instructor_id,
-                                    ##! CAREFUL. THIS NEEDS TO BE GLOBAL
-                                    semester="sp19",
+                                    semester=semester,
                                     import_date=datetime.datetime.utcnow(),
                                     course_regestration_number=each.course_reg_number)
                 session.add(new_course)
@@ -366,7 +367,7 @@ def add_scraped_videos(title, link, course_id, caption_state, course_gen_id, sec
     scraped_video_check = session.query(ScrapediLearnVideos).filter_by(resource_link=link).filter_by(course_gen_id=course_gen_id).first()
 
     if not scraped_video_check:
-
+        print("VIDEO DOESNT EXIST")
         video_resource = ScrapediLearnVideos(resource_link=link,
                                              title=title,
                                              course_ilearn_id=course_id,
@@ -391,5 +392,17 @@ def add_scraped_videos(title, link, course_id, caption_state, course_gen_id, sec
 
         session.commit()
 
+
+def update_video_accomm(course_id):
+
+    try:
+        video_accomm = session.query(Enrollment).filter_by(course_id=course_id).all()
+
+        for enrollment in video_accomm:
+            enrollment.student_requests_captioning = True
+            session.commit()
+    except db_error.NoResultFound:
+
+        print("No Course Found", course_id)
 
 

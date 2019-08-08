@@ -1,11 +1,22 @@
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, DateTime, text, Table, Time
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, DateTime, text, Table, Time, Sequence
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session
 from sqlalchemy.orm import relationship, sessionmaker
 from sqlalchemy import create_engine
 from datetime import datetime
 import sqlalchemy.exc
+from sqlalchemy.schema import CreateSchema
 Base = declarative_base()
+import traceback
+
+
+class PermissionType(Base):
+
+    __tablename__ ='permission_type'
+
+    user_id = Column(String, primary_key=True)
+    permission_type = Column(String)
+
 
 
 class CourseIlearnID(Base):
@@ -25,6 +36,7 @@ class Enrollment(Base):
     student_id = Column(String, ForeignKey("student.student_id"), primary_key=True)
     student_enrolled = Column(Boolean)
     last_updated = Column(DateTime, default=datetime.utcnow())
+    student_requests_captioning = Column(Boolean)
     student = relationship("Student")
     course = relationship("Course")
 
@@ -32,12 +44,13 @@ class Enrollment(Base):
 class Employee(Base):
 
     __tablename__ = 'employee'
-    id = Column(Integer, primary_key=True)
-    employee_id = Column(String, unique=True)
+
+    employee_id = Column(String, primary_key=True)
     employee_first_name = Column(String)
     employee_last_name = Column(String)
     employee_email = Column(String)
     employee_phone = Column(String)
+    permission_type = Column(String)
     courses_instructing = relationship('Course', backref='employee')
     related_organizations = relationship('CampusOrganizationAssignment')
 
@@ -65,8 +78,8 @@ class Course(Base):
 
     __tablename__ = 'course'
 
-    id = Column(Integer, primary_key=True)
-    course_gen_id = Column(String, unique=True)
+
+    course_gen_id = Column(String,  primary_key=True)
     course_name = Column(String)
     course_title = Column(String)
     course_section = Column(String)
@@ -84,7 +97,8 @@ class Course(Base):
     activate_ilearn_video_notification_sent = Column(String)
     ilearn_page_id = relationship(CourseIlearnID,
                                   foreign_keys=[course_gen_id],
-                                  primaryjoin='CourseIlearnID.course_gen_id == Course.course_gen_id')
+                                  primaryjoin='CourseIlearnID.course_gen_id == Course.course_gen_id',
+                                  lazy='joined')
     import_date = Column(DateTime)
     course_regestration_number = Column(String)
     instructor_requests_captioning = Column(Boolean)
@@ -94,7 +108,7 @@ class CaptioningRequester(Base):
 
     __tablename__ = 'captioning_requester'
     # This is the in point to the application
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer,  primary_key=True)
     campus_association_id = Column(Integer, ForeignKey('campus_association_assignment.id'), unique=True)
     campus_association = relationship(CampusOrganizationAssignment)
     course_id = Column(String, ForeignKey('course.course_gen_id'), unique=True)
@@ -104,8 +118,8 @@ class CaptioningRequester(Base):
 class Student(Base):
 
     __tablename__ = 'student'
-    id = Column(Integer, primary_key=True)
-    student_id = Column(String, unique=True)
+
+    student_id = Column(String, primary_key=True)
     student_first_name = Column(String)
     student_last_name = Column(String)
     student_email = Column(String)
@@ -119,7 +133,7 @@ class Student(Base):
 class CaptioningMedia(Base):
 
     __tablename__ = "captioning_media"
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer,  primary_key=True)
     media_type = Column(String)
     title = Column(String)
     length = Column(String)
@@ -133,7 +147,7 @@ class CaptioningMedia(Base):
 class CaptioningJob(Base):
 
     __tablename__ = "captioning_job"
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer,  primary_key=True)
     requester_id = Column(Integer, ForeignKey("captioning_requester.id"))
     requester = relationship(CaptioningRequester)
     request_date = Column(DateTime, default=datetime.utcnow)
@@ -162,7 +176,7 @@ class ScrapediLearnVideos(Base):
     resource_link = Column(String)
     title = Column(String)
     scan_date = Column(DateTime, default=datetime.utcnow)
-    video_length = Column(String) ##! Change to time
+    video_length = Column(Time) ##! Change to time
     captioned = Column(Boolean)
     captioned_version_id = Column(String)
     indicated_due_date = Column(DateTime)
@@ -170,9 +184,12 @@ class ScrapediLearnVideos(Base):
     submitted_for_processing_date = Column(DateTime)
     course_ilearn_id = Column(String)
     course_gen_id = Column(String, ForeignKey("course.course_gen_id"))
-    course = relationship(Course, lazy='joined')
+    course = relationship(Course)
     semester = Column(String)
     page_section = Column(String)
+    captioned_version = relationship(CaptioningMedia, foreign_keys=[resource_link],
+                                     lazy='joined',
+                                     primaryjoin='CaptioningMedia.source_url == ScrapediLearnVideos.resource_link')
 
 
 class DroppedCoursesDiffView(Base):
@@ -227,6 +244,7 @@ class myDPRCRawCourseList(Base):
 
     id = Column(Integer, primary_key=True)
     course_regestration_number = Column(String)
+    term_code = Column(String)
     subject_code = Column(String)
     course_number = Column(String)
     section_number = Column(String)
@@ -261,27 +279,32 @@ class CaptionStudentCoursesView(Base):
 def get_dbase_session():
 
     try:
-        engine = create_engine("postgresql://daniel:accessiblevids@130.212.104.17/captioning_dev_utf8",
-                               connect_args={'options': '-csearch_path={}'.format("dev_test"),
-                                             'connect_timeout': 3},
+        engine = create_engine("postgresql://daniel:accessiblevids@130.212.104.17/captioning_v2",
+                               connect_args={'options': '-csearch_path={}'.format("main_1")},
                                client_encoding='utf8')
         Base.metadata.create_all(engine)
+
         DBsession = sessionmaker(bind=engine)
         session = DBsession()
+        print("Database Connected")
         return session
-    except sqlalchemy.exc.OperationalError:
-        print("COULD NOT MAKE DBASE CONNECTION WILL NOT WORK")
+    except:
+        print(traceback.print_exc())
         pass
 
 if __name__ == '__main__':
     try:
 
-        engine = create_engine("postgresql://daniel:accessiblevids@130.212.104.17/captioning_dev_utf8",
-                               connect_args={'options': '-csearch_path={}'.format("dev_test")},
+        engine = create_engine("postgresql://daniel:accessiblevids@130.212.104.17/captioning_v2",
+                               connect_args={'options': '-csearch_path={}'.format("main_1"), 'sslmode': 'verify-ca',
+                                             'connect_timeout': 3, "sslrootcert": "C:\\Users\\913678186\\Box\\Servers\\amp_dprc_db_server\\ssl\\root.crt",
+                                             "sslkey": "C:\\Users\\913678186\\Box\\Servers\\amp_dprc_db_server\\ssl\\postgresql\\postgresql.key",
+                                             "sslcert": "C:\\Users\\913678186\\Box\\Servers\\amp_dprc_db_server\\ssl\\postgresql\\postgresql.crt"
+                                             },
                                client_encoding='utf8')
+        engine.execute(CreateSchema("main_1"))
         Base.metadata.create_all(engine)
+        print("Built Db")
     except:
         pass
-
-
 

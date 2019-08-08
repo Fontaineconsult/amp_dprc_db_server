@@ -195,3 +195,868 @@ Traceback (most recent call last):
     raise ConnectionError(e, request=request)
 requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.onitube.com', port=443): Max retries exceeded with url: /video/46861 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001CBB7456E80>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it',))
 
+2019-05-22 11:26:25,467: HEAD REQUEST: Failed to establish a new connection, Max Retries http://engl210-deykute.wikispaces.umb.edu/file/view/omelas.pdf Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1026, in _send_output
+    self.send(msg)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 964, in send
+    self.connect()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001CBACFC9B00>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='engl210-deykute.wikispaces.umb.edu', port=80): Max retries exceeded with url: /file/view/omelas.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001CBACFC9B00>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\Box\Servers\amp_dprc_db_server\ilearn_scraper\request_functions.py", line 111, in get_resources_header
+    header = session.head(resource_url, verify=False)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 547, in head
+    return self.request('HEAD', url, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='engl210-deykute.wikispaces.umb.edu', port=80): Max retries exceeded with url: /file/view/omelas.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001CBACFC9B00>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',))
+
+2019-05-22 11:44:21,208: HEAD REQUEST: Failed to establish a new connection, Max Retries http://www.ulink49.org/ Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 56, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\socket.py", line 745, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1026, in _send_output
+    self.send(msg)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 964, in send
+    self.connect()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001CBA8D2F978>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='www.ulink49.org', port=80): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001CBA8D2F978>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\Box\Servers\amp_dprc_db_server\ilearn_scraper\request_functions.py", line 111, in get_resources_header
+    header = session.head(resource_url, verify=False)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 547, in head
+    return self.request('HEAD', url, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='www.ulink49.org', port=80): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001CBA8D2F978>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed',))
+
+2019-05-22 11:49:44,349: HEAD REQUEST: Failed to establish a new connection, Max Retries http://www.ncids.org/Defender%20Training/2012SpringConference/CustodyWaiverMiranda%20Rights.pdf Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1026, in _send_output
+    self.send(msg)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 964, in send
+    self.connect()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001CBAA743BA8>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='www.ncids.org', port=80): Max retries exceeded with url: /Defender%20Training/2012SpringConference/CustodyWaiverMiranda%20Rights.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001CBAA743BA8>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\Box\Servers\amp_dprc_db_server\ilearn_scraper\request_functions.py", line 111, in get_resources_header
+    header = session.head(resource_url, verify=False)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 547, in head
+    return self.request('HEAD', url, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='www.ncids.org', port=80): Max retries exceeded with url: /Defender%20Training/2012SpringConference/CustodyWaiverMiranda%20Rights.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001CBAA743BA8>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',))
+
+2019-05-24 12:19:57,927: -------------------------
+2019-05-24 12:26:35,549: -------------------------
+2019-05-24 12:44:29,015: HEAD REQUEST: Failed to establish a new connection, Max Retries http://projectevemoms.com/childrens-books-why-kids-need-diverse-books/?utm_content=bufferfb6c3&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1026, in _send_output
+    self.send(msg)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 964, in send
+    self.connect()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000002D70FC865C0>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='projectevemoms.com', port=80): Max retries exceeded with url: /childrens-books-why-kids-need-diverse-books/?utm_content=bufferfb6c3&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002D70FC865C0>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\Box\Servers\amp_dprc_db_server\ilearn_scraper\request_functions.py", line 111, in get_resources_header
+    header = session.head(resource_url, verify=False)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 547, in head
+    return self.request('HEAD', url, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='projectevemoms.com', port=80): Max retries exceeded with url: /childrens-books-why-kids-need-diverse-books/?utm_content=bufferfb6c3&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002D70FC865C0>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',))
+
+2019-05-24 12:47:48,205: HEAD REQUEST: Failed to establish a new connection, Max Retries https://www.onitube.com/video/46861 Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 343, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 849, in _validate_conn
+    conn.connect()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 314, in connect
+    conn = self._new_conn()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000002D76B399240>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.onitube.com', port=443): Max retries exceeded with url: /video/46861 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000002D76B399240>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\Box\Servers\amp_dprc_db_server\ilearn_scraper\request_functions.py", line 111, in get_resources_header
+    header = session.head(resource_url, verify=False)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 547, in head
+    return self.request('HEAD', url, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.onitube.com', port=443): Max retries exceeded with url: /video/46861 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000002D76B399240>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it',))
+
+2019-05-24 12:52:04,294: HEAD REQUEST: Failed to establish a new connection, Max Retries http://engl210-deykute.wikispaces.umb.edu/file/view/omelas.pdf Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1026, in _send_output
+    self.send(msg)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 964, in send
+    self.connect()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000002D76355FF98>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='engl210-deykute.wikispaces.umb.edu', port=80): Max retries exceeded with url: /file/view/omelas.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002D76355FF98>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\Box\Servers\amp_dprc_db_server\ilearn_scraper\request_functions.py", line 111, in get_resources_header
+    header = session.head(resource_url, verify=False)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 547, in head
+    return self.request('HEAD', url, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='engl210-deykute.wikispaces.umb.edu', port=80): Max retries exceeded with url: /file/view/omelas.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002D76355FF98>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',))
+
+2019-05-24 13:07:35,740: HEAD REQUEST: Failed to establish a new connection, Max Retries http://www.ulink49.org/ Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 56, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\socket.py", line 745, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1026, in _send_output
+    self.send(msg)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 964, in send
+    self.connect()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000002D704AC8DD8>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='www.ulink49.org', port=80): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002D704AC8DD8>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\Box\Servers\amp_dprc_db_server\ilearn_scraper\request_functions.py", line 111, in get_resources_header
+    header = session.head(resource_url, verify=False)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 547, in head
+    return self.request('HEAD', url, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='www.ulink49.org', port=80): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002D704AC8DD8>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed',))
+
+2019-05-24 13:12:14,062: HEAD REQUEST: Failed to establish a new connection, Max Retries http://www.ncids.org/Defender%20Training/2012SpringConference/CustodyWaiverMiranda%20Rights.pdf Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1026, in _send_output
+    self.send(msg)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 964, in send
+    self.connect()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000002D765F13E48>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='www.ncids.org', port=80): Max retries exceeded with url: /Defender%20Training/2012SpringConference/CustodyWaiverMiranda%20Rights.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002D765F13E48>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\Box\Servers\amp_dprc_db_server\ilearn_scraper\request_functions.py", line 111, in get_resources_header
+    header = session.head(resource_url, verify=False)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 547, in head
+    return self.request('HEAD', url, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='www.ncids.org', port=80): Max retries exceeded with url: /Defender%20Training/2012SpringConference/CustodyWaiverMiranda%20Rights.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002D765F13E48>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',))
+
+2019-05-24 14:29:33,375: -------------------------
+2019-05-24 14:44:47,877: HEAD REQUEST: Failed to establish a new connection, Max Retries http://projectevemoms.com/childrens-books-why-kids-need-diverse-books/?utm_content=bufferfb6c3&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1026, in _send_output
+    self.send(msg)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 964, in send
+    self.connect()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001A8B79492E8>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='projectevemoms.com', port=80): Max retries exceeded with url: /childrens-books-why-kids-need-diverse-books/?utm_content=bufferfb6c3&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A8B79492E8>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\Box\Servers\amp_dprc_db_server\ilearn_scraper\request_functions.py", line 111, in get_resources_header
+    header = session.head(resource_url, verify=False)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 547, in head
+    return self.request('HEAD', url, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='projectevemoms.com', port=80): Max retries exceeded with url: /childrens-books-why-kids-need-diverse-books/?utm_content=bufferfb6c3&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A8B79492E8>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',))
+
+2019-05-24 14:47:33,486: HEAD REQUEST: Failed to establish a new connection, Max Retries https://www.onitube.com/video/46861 Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 343, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 849, in _validate_conn
+    conn.connect()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 314, in connect
+    conn = self._new_conn()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001A8C44496A0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.onitube.com', port=443): Max retries exceeded with url: /video/46861 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001A8C44496A0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\Box\Servers\amp_dprc_db_server\ilearn_scraper\request_functions.py", line 111, in get_resources_header
+    header = session.head(resource_url, verify=False)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 547, in head
+    return self.request('HEAD', url, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.onitube.com', port=443): Max retries exceeded with url: /video/46861 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001A8C44496A0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it',))
+
+2019-05-24 14:51:29,823: HEAD REQUEST: Failed to establish a new connection, Max Retries http://engl210-deykute.wikispaces.umb.edu/file/view/omelas.pdf Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1026, in _send_output
+    self.send(msg)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 964, in send
+    self.connect()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001A8BE5D59B0>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='engl210-deykute.wikispaces.umb.edu', port=80): Max retries exceeded with url: /file/view/omelas.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A8BE5D59B0>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\Box\Servers\amp_dprc_db_server\ilearn_scraper\request_functions.py", line 111, in get_resources_header
+    header = session.head(resource_url, verify=False)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 547, in head
+    return self.request('HEAD', url, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='engl210-deykute.wikispaces.umb.edu', port=80): Max retries exceeded with url: /file/view/omelas.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A8BE5D59B0>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',))
+
+2019-05-24 15:05:17,030: HEAD REQUEST: Failed to establish a new connection, Max Retries http://www.ulink49.org/ Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 56, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\socket.py", line 745, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1026, in _send_output
+    self.send(msg)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 964, in send
+    self.connect()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001A8BF2E2F98>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='www.ulink49.org', port=80): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A8BF2E2F98>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\Box\Servers\amp_dprc_db_server\ilearn_scraper\request_functions.py", line 111, in get_resources_header
+    header = session.head(resource_url, verify=False)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 547, in head
+    return self.request('HEAD', url, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='www.ulink49.org', port=80): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A8BF2E2F98>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed',))
+
+2019-05-24 15:09:41,617: HEAD REQUEST: Failed to establish a new connection, Max Retries http://www.ncids.org/Defender%20Training/2012SpringConference/CustodyWaiverMiranda%20Rights.pdf Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1026, in _send_output
+    self.send(msg)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 964, in send
+    self.connect()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001A8B8BA7E80>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='www.ncids.org', port=80): Max retries exceeded with url: /Defender%20Training/2012SpringConference/CustodyWaiverMiranda%20Rights.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A8B8BA7E80>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\Box\Servers\amp_dprc_db_server\ilearn_scraper\request_functions.py", line 111, in get_resources_header
+    header = session.head(resource_url, verify=False)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 547, in head
+    return self.request('HEAD', url, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='www.ncids.org', port=80): Max retries exceeded with url: /Defender%20Training/2012SpringConference/CustodyWaiverMiranda%20Rights.pdf (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A8B8BA7E80>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',))
+
+2019-06-07 13:05:51,799: -------------------------
+2019-06-07 13:31:32,002: HEAD REQUEST: Failed to establish a new connection, Max Retries http://projectevemoms.com/childrens-books-why-kids-need-diverse-books/?utm_content=bufferfb6c3&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1026, in _send_output
+    self.send(msg)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 964, in send
+    self.connect()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x00000212033F55F8>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='projectevemoms.com', port=80): Max retries exceeded with url: /childrens-books-why-kids-need-diverse-books/?utm_content=bufferfb6c3&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000212033F55F8>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\Box\Servers\amp_dprc_db_server\ilearn_scraper\request_functions.py", line 111, in get_resources_header
+    header = session.head(resource_url, verify=False)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 547, in head
+    return self.request('HEAD', url, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='projectevemoms.com', port=80): Max retries exceeded with url: /childrens-books-why-kids-need-diverse-books/?utm_content=bufferfb6c3&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000212033F55F8>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',))
+
+2019-06-07 14:36:50,430: -------------------------
+2019-06-07 14:37:45,652: -------------------------
+2019-06-07 14:45:43,665: -------------------------
+2019-06-07 14:49:21,323: -------------------------
+2019-08-08 12:10:04,912: -------------------------
+2019-08-08 12:12:38,021: -------------------------
+2019-08-08 12:16:24,851: -------------------------
+2019-08-08 12:24:37,154: HEAD REQUEST: Failed to establish a new connection, Max Retries http://childlit.comminfo.rutgers.edu/YoungAdult/index.html Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\connection.py", line 56, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\socket.py", line 745, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1026, in _send_output
+    self.send(msg)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 964, in send
+    self.connect()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x00000291B9708EB8>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='childlit.comminfo.rutgers.edu', port=80): Max retries exceeded with url: /YoungAdult/index.html (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000291B9708EB8>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\913678186\Box\Servers\amp_dprc_db_server\ilearn_scraper\request_functions.py", line 111, in get_resources_header
+    header = session.head(resource_url, verify=False)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 547, in head
+    return self.request('HEAD', url, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\913678186\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='childlit.comminfo.rutgers.edu', port=80): Max retries exceeded with url: /YoungAdult/index.html (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000291B9708EB8>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed',))
+

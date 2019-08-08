@@ -1,7 +1,7 @@
 import amp_dprc_database.dbase_functions as dbase_functions
 import xlwt
 
-all_courses = dbase_functions.get_all_courses("sp19")
+all_courses = dbase_functions.get_all_courses("fa19")
 
 print(all_courses)
 
@@ -50,11 +50,11 @@ def build_course_rows():
                                        course.course_name,
                                        course.course_section,
                                        enrolled.student_enrolled,
-                                       course.course_instructor.instructor_first_name,
-                                       course.course_instructor.instructor_last_name,
-                                       course.course_instructor.instructor_id,
-                                       course.course_instructor.instructor_phone,
-                                       course.course_instructor.instructor_email,
+                                       course.course_instructor.employee_first_name,
+                                       course.course_instructor.employee_last_name,
+                                       course.course_instructor.employee_id,
+                                       course.course_instructor.employee_phone,
+                                       course.course_instructor.employee_email,
                                        course.course_gen_id))
 
         print(all_rows)
