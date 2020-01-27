@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="captioning@130.212.104.17">
-  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.14">
+  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.17">
     <root id="1">
       <ServerVersion>9.2.24</ServerVersion>
     </root>
@@ -8,7 +8,6 @@
       <ObjectId>16385</ObjectId>
       <IntrospectionStateNumber>2</IntrospectionStateNumber>
       <Current>1</Current>
-      <Visible>1</Visible>
     </database>
     <database id="3" parent="1" name="postgres">
       <ObjectId>12924</ObjectId>
@@ -16,44 +15,32 @@
     </database>
     <role id="4" parent="1" name="captions">
       <ObjectId>16384</ObjectId>
-      <Inherit>1</Inherit>
       <CreateDb>1</CreateDb>
       <CanLogin>1</CanLogin>
-      <ConnectionLimit>-1</ConnectionLimit>
     </role>
     <role id="5" parent="1" name="daniel">
       <ObjectId>16386</ObjectId>
-      <Inherit>1</Inherit>
       <CreateDb>1</CreateDb>
       <CanLogin>1</CanLogin>
-      <ConnectionLimit>-1</ConnectionLimit>
     </role>
     <role id="6" parent="1" name="dev_environ">
       <ObjectId>17960</ObjectId>
-      <Inherit>1</Inherit>
-      <ConnectionLimit>-1</ConnectionLimit>
     </role>
     <role id="7" parent="1" name="postgres">
       <ObjectId>10</ObjectId>
       <SuperRole>1</SuperRole>
-      <Inherit>1</Inherit>
       <CreateRole>1</CreateRole>
       <CreateDb>1</CreateDb>
       <CanLogin>1</CanLogin>
       <Replication>1</Replication>
-      <ConnectionLimit>-1</ConnectionLimit>
     </role>
     <role id="8" parent="1" name="server_admin">
       <ObjectId>16387</ObjectId>
-      <Inherit>1</Inherit>
       <CanLogin>1</CanLogin>
-      <ConnectionLimit>-1</ConnectionLimit>
     </role>
     <role id="9" parent="1" name="sqlalchemy">
       <ObjectId>16388</ObjectId>
-      <Inherit>1</Inherit>
       <CanLogin>1</CanLogin>
-      <ConnectionLimit>-1</ConnectionLimit>
     </role>
     <schema id="10" parent="2" name="information_schema">
       <ObjectId>12381</ObjectId>
@@ -78,7 +65,6 @@
       <IntrospectionTimestamp>2019-01-24.12:20:30.591</IntrospectionTimestamp>
       <IntrospectionStateNumber>45408</IntrospectionStateNumber>
       <Current>1</Current>
-      <Visible>1</Visible>
     </schema>
     <access-method id="16" parent="2" name="btree">
       <ObjectId>403</ObjectId>
@@ -299,8 +285,8 @@
     <key id="58" parent="35" name="automatic_sync_job_pkey">
       <ObjectId>17808</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>automatic_sync_job_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>automatic_sync_job_pkey</UnderlyingIndexName>
     </key>
     <column id="59" parent="36" name="id">
       <Position>1</Position>
@@ -318,8 +304,8 @@
     <key id="61" parent="36" name="automatic_sync_job_result_pkey">
       <ObjectId>17979</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>automatic_sync_job_result_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>automatic_sync_job_result_pkey</UnderlyingIndexName>
     </key>
     <column id="62" parent="37" name="id">
       <Position>1</Position>
@@ -367,8 +353,8 @@
     <key id="69" parent="37" name="automatic_sync_job_status_pkey">
       <ObjectId>17971</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>automatic_sync_job_status_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>automatic_sync_job_status_pkey</UnderlyingIndexName>
     </key>
     <column id="70" parent="38" name="id">
       <Position>1</Position>
@@ -470,8 +456,8 @@
     <key id="86" parent="38" name="caption_student_coures_pkey">
       <ObjectId>18155</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>caption_student_coures_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>caption_student_coures_pkey</UnderlyingIndexName>
     </key>
     <column id="87" parent="39" name="id">
       <Position>1</Position>
@@ -542,8 +528,8 @@
     <key id="98" parent="39" name="captioning_media_pkey">
       <ObjectId>17797</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>captioning_media_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>captioning_media_pkey</UnderlyingIndexName>
     </key>
     <key id="99" parent="39" name="captioning_media_source_url_key">
       <ObjectId>17933</ObjectId>
@@ -649,8 +635,8 @@
     <key id="116" parent="40" name="course_pkey">
       <ObjectId>17819</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>course_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>course_pkey</UnderlyingIndexName>
     </key>
     <key id="117" parent="40" name="course_course_gen_id_key">
       <ObjectId>17821</ObjectId>
@@ -772,8 +758,8 @@
     <key id="136" parent="41" name="course_captioning_job_pkey">
       <ObjectId>17881</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>course_captioning_job_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>course_captioning_job_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="137" parent="41" name="course_captioning_job_course_id_fkey">
       <ObjectId>17882</ObjectId>
@@ -830,8 +816,8 @@
     <key id="144" parent="42" name="course_ilearn_id_pkey">
       <ObjectId>17760</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>course_ilearn_id_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>course_ilearn_id_pkey</UnderlyingIndexName>
     </key>
     <column id="145" parent="43" name="course_id">
       <Position>1</Position>
@@ -863,8 +849,8 @@ student_id</ColNames>
       <ObjectId>17860</ObjectId>
       <ColNames>course_id
 student_id</ColNames>
-      <UnderlyingIndexName>enrollment_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>enrollment_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="150" parent="43" name="enrollment_course_id_fkey">
       <ObjectId>17861</ObjectId>
@@ -984,8 +970,8 @@ student_id</ColNames>
     <key id="168" parent="44" name="individual_captioning_job_pkey">
       <ObjectId>17837</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>individual_captioning_job_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>individual_captioning_job_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="169" parent="44" name="individual_captioning_job_media_id_fkey">
       <ObjectId>17838</ObjectId>
@@ -1065,8 +1051,8 @@ student_id</ColNames>
     <key id="180" parent="45" name="instructor_pkey">
       <ObjectId>17771</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>instructor_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>instructor_pkey</UnderlyingIndexName>
     </key>
     <key id="181" parent="45" name="instructor_instructor_id_key">
       <ObjectId>17773</ObjectId>
@@ -1137,8 +1123,8 @@ student_id</ColNames>
     <key id="192" parent="46" name="rawcourselist_pkey">
       <ObjectId>18001</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>rawcourselist_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>rawcourselist_pkey</UnderlyingIndexName>
     </key>
     <column id="193" parent="47" name="id">
       <Position>1</Position>
@@ -1203,8 +1189,8 @@ student_id</ColNames>
     <key id="203" parent="47" name="student_pkey">
       <ObjectId>17784</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>student_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>student_pkey</UnderlyingIndexName>
     </key>
     <key id="204" parent="47" name="student_student_id_key">
       <ObjectId>17786</ObjectId>
@@ -1239,8 +1225,8 @@ student_id</ColNames>
     <key id="209" parent="48" name="studentenrollement_pkey">
       <ObjectId>17990</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>studentenrollement_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>studentenrollement_pkey</UnderlyingIndexName>
     </key>
     <column id="210" parent="49" name="student_id">
       <Position>1</Position>

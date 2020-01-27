@@ -174,6 +174,7 @@ def clear_myDPRC_course_data():
 
 def commit_myDPRC_student_enrollement(student_id, course_id):
 
+
     myDPRC_enrollement = myDPRCStudentEnrollemet(student_id=student_id, course_reg_number=course_id)
     session.add(myDPRC_enrollement)
     session.commit()
@@ -267,10 +268,14 @@ def update_course_enrollement():
     def add_new_course_to_enrollement():
 
         for each in current_enrollement:
-            enrolled_ids.append(( each.course_id, each.student_id))
+            student_id = each.student_id.rstrip()
+            print(student_id)
+
+            enrolled_ids.append(( each.course_id, student_id))
 
         for each in current_students_view:
-            current_course_ids_view.append((each.course_gen_key, each.student_id))
+            student_id = each.student_id.rstrip()
+            current_course_ids_view.append((each.course_gen_key, student_id))
 
 
     def compare_lists():
@@ -283,16 +288,18 @@ def update_course_enrollement():
         courses_checked = 0
         print("TOTAL COURSES TO AMTCH", len(current_course_ids_view))
         for each in current_course_ids_view:
+            student_id = each[1].rstrip()
+            course = (each[0], student_id)
 
-            course = (each[0], each[1])
             print("checking course in enroll", course)
             try:
 
                 courses_checked += 1
-                session.query(Enrollment).filter_by(course_id=each[0]).filter_by(student_id=each[1]).one()
+                session.query(Enrollment).filter_by(course_id=each[0], student_id=student_id).one()
+                print("COURSE WAS FOUND", each[0])
 
             except db_error.NoResultFound:
-
+                print("Course Will be added to enroll", each[0])
                 commit_course_to_enroll(course)
 
         print(courses_checked)
@@ -300,6 +307,8 @@ def update_course_enrollement():
     def commit_course_to_enroll(course):
 
         try:
+
+
             new_enrollement = Enrollment(course_id=course[0],
                                          student_id=course[1],
                                          last_updated=datetime.datetime.utcnow(),
@@ -307,8 +316,10 @@ def update_course_enrollement():
             session.add(new_enrollement)
             session.commit()
             print("ADDING TO ENROLLMENT",  course[0], course[1])
+
         except core_db_error.IntegrityError:
-            print("Course/Student Already Exists in enrolled table, IntegrityError")
+            print(traceback.print_exc())
+            print("Course/Student Already Exists in enrolled table, IntegrityError", course[0], )
             session.rollback()
         except db_error.FlushError:
             print("Course/Student Already Exists in enrolled table, FlushError")
@@ -318,9 +329,9 @@ def update_course_enrollement():
         courses_to_drop = session.query(DroppedCoursesDiffView).all()
 
         for each_course in courses_to_drop:
-
+            student_id = each_course.student_id
             try:
-                drop_check = session.query(Enrollment).filter_by(course_id=each_course.course_id).filter_by(student_id=each_course.student_id).one()
+                drop_check = session.query(Enrollment).filter_by(course_id=each_course.course_id, student_id=student_id).one()
                 drop_check.student_enrolled = False
                 print("Dropped course", each_course.course_id)
                 session.commit()
@@ -362,7 +373,7 @@ def update_course_enrollement():
     drop_enrollment_from_diff_table()
 
 
-def add_scraped_videos(title, link, course_id, caption_state, course_gen_id, section):
+def add_scraped_videos(title, link, course_id, caption_state, course_gen_id, section, semester):
 
     scraped_video_check = session.query(ScrapediLearnVideos).filter_by(resource_link=link).filter_by(course_gen_id=course_gen_id).first()
 
@@ -373,7 +384,8 @@ def add_scraped_videos(title, link, course_id, caption_state, course_gen_id, sec
                                              course_ilearn_id=course_id,
                                              captioned=caption_state,
                                              course_gen_id=course_gen_id,
-                                             page_section=section)
+                                             page_section=section,
+                                             semester=semester)
 
         session.add(video_resource)
         session.commit()
@@ -393,14 +405,49 @@ def add_scraped_videos(title, link, course_id, caption_state, course_gen_id, sec
         session.commit()
 
 
-def update_video_accomm(course_id):
+def add_ilearn_course_name(ilearn_course_name, course_gen_id):
+
+    course = session.query(Course).filter_by(course_gen_id=course_gen_id).first()
+
+    if course:
+
+        course.course_title = ilearn_course_name
+        session.commit()
+
+
+
+
+
+def clear_video_accomm_status():
+
+    video_accomm = session.query(Enrollment).all()
+
+    for each in video_accomm:
+        each.student_requests_captioning = False
+
+    session.commit()
+
+
+
+def update_video_accomm(course_id, student_id, accomm_added_date):
+
+
 
     try:
-        video_accomm = session.query(Enrollment).filter_by(course_id=course_id).all()
+        video_accomm = session.query(Enrollment).filter_by(course_id=course_id, student_id=student_id).all()
 
-        for enrollment in video_accomm:
-            enrollment.student_requests_captioning = True
-            session.commit()
+        if len(video_accomm) == 0:
+            print("No Course Found for", course_id)
+
+        else:
+
+            for enrollment in video_accomm:
+                enrollment.student_requests_captioning = True
+                enrollment.accomm_added_date = accomm_added_date
+
+
+                session.commit()
+
     except db_error.NoResultFound:
 
         print("No Course Found", course_id)

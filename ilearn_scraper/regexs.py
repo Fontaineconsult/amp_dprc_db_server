@@ -15,10 +15,10 @@ folders_group = "((resource/view.php\?id=[0-9]{0,7})" \
 
 
 # direct download links on main iLearn page. mod resource can be folder
-first_level_resource_links = re.compile(r"(https://ilearn.support.at.sfsu.edu/ay1819/mod/)" + first_level_group)
+first_level_resource_links = re.compile(r"(https://ilearn.support.at.sfsu.edu/ay1920/mod/)" + first_level_group)
 
 # links to another page with a download link
-first_level_url_links = re.compile(r"(https://ilearn.support.at.sfsu.edu/ay1819/mod/)" + url_links_group)
+first_level_url_links = re.compile(r"(https://ilearn.support.at.sfsu.edu/ay1920/mod/)" + url_links_group)
 
 direct_external_links = re.compile("https://www.youtube.com/watch\?v=.{11}|"
                                    "https://www.dailymotion.com/video/.{7}")
@@ -26,11 +26,11 @@ direct_external_links = re.compile("https://www.youtube.com/watch\?v=.{11}|"
 
 #links to folders with multiple downloads.
 
-folder_links = re.compile(r"(https://ilearn.support.at.sfsu.edu/ay1819/mod/)" + folders_group)
+folder_links = re.compile(r"(https://ilearn.support.at.sfsu.edu/ay1920/mod/)" + folders_group)
 
 
 
-links_to_remove = re.compile("(https://ilearn.support.at.sfsu.edu/ay1819/mod/)("
+links_to_remove = re.compile("(https://ilearn.support.at.sfsu.edu/ay1920/mod/)("
                              "(turnitintooltwo/.+)|"
                              "(attendance/.+)|"
                              "(forum/.+)|"
@@ -39,31 +39,32 @@ links_to_remove = re.compile("(https://ilearn.support.at.sfsu.edu/ay1819/mod/)("
                              "(zoom/:.+))|"
                              "(mailto:.+)|"
                              "(https://email.sfsu.edu/owa/.+)|"
-                             "(https://ilearn.support.at.sfsu.edu/ay1819/course/view.php\?id=\d{0,7}#section-\d+)|"
-                             "(https://ilearn.support.at.sfsu.edu/ay1819/course/view.php?id=[0-9]{0,7})|"
+                             "(https://ilearn.support.at.sfsu.edu/ay1920/course/view.php\?id=\d{0,7}#section-\d+)|"
+                             "(https://ilearn.support.at.sfsu.edu/ay1920/course/view.php?id=[0-9]{0,7})|"
                              "(\A#{1}.+)|"
-                             "(https://ilearn.sfsu.edu/.+)")
+                             "(https://ilearn.sfsu.edu/.+)|"
+                             "https://presidio.at.sfsu.edu/.+")
 
 
 # e_reserve_link = re.compile()
 
 
 
-moodle_content_id_regex = "https://ilearn.support.at.sfsu.edu/ay1819/mod/(((url|presidioresource|mediasite)|" \
-                          "(page)|(assign)|(folder)|(resource))/view.php\?id=[0-9]{0,7})|" \
+moodle_content_id_regex = "https://ilearn.support.at.sfsu.edu/ay1920/mod/(((url|mediasite)|" \
+                          "(page)|(assign)|(folder)|(resource)|(presidioresource))/view.php\?id=[0-9]{0,7})|" \
                           "(.*\.pdf|.*\.docx|.*\.ppt|.*\.doc|.*\.pptx|.*\.jpg|.*\.rtf|.*\.m4a|.*\.pages|.*\.rar|.*\.xlsx|.*\.zip)|" \
                           "(https://diva.sfsu.edu/bundles/[0-9]{5,8}/download)"
 
-first_level_mediasite_links = re.compile("https://ilearn.support.at.sfsu.edu/ay1819/mod/mediasite/view.php\?id=.+")
+first_level_mediasite_links = re.compile("https://ilearn.support.at.sfsu.edu/ay1920/mod/mediasite/view.php\?id=.+")
 
 
 url_id = re.compile("[0-9]{5,7}")
 
-resource_type = re.compile("(.*..*.youtu[\.]?be.*..*.|.*.vimeo.*.|.*.mediasite.*.|.*.dailymotion.*.|.*.presidio.*.|.*.alexanderstreet.*.|.*./amara.org/en/videos/.*.|.*.fod.infobase.com.jpllnet.sfsu.edu.*.|.*.player.vimeo.com.*.|.*.www.ted.com/talks/.*.)|"
+resource_type = re.compile("(.*\.m4a|.*\.mov|.*\.mpg|.*\.mp4|.*..*.youtu[\.]?be.*..*.|.*.vimeo.*.|.*.mediasite.*.|.*.dailymotion.*.|.*.presidioresource.*.|.*.alexanderstreet.*.|.*./amara.org/en/videos/.*.|.*.fod.infobase.com.jpllnet.sfsu.edu.*.|.*.player.vimeo.com.*.|.*.www.ted.com/talks/.*.|.*./video-clips/.*.|.*./video/.*.|.*./videos/.*.|.*./v/.*.|.*./podcasts/.*.|.*.facebook.com/watch/\?v.*.)|"
                            "(.*\.pdf|.*\.docx|.*\.ppt|.*\.doc|.*\.pptx|.*\.jpg|.*\.rtf|.*\.pages|.*\.rar|.*\.xlsx|.*\.zip|.*\.m4a|.*\.mov|.*\.mpg|.*\.mp4)", re.IGNORECASE)
 
 
-service_type = re.compile("(.*..*.youtu[\.]?be.*..*.|.*.vimeo.*.|.*.mediasite.*.|.*.dailymotion.*.|.*.presidio.*.|.*\.m4a|.*\.mov|.*\.mpg|.*\.mp4|.*.alexanderstreet.*.|.*./amara.org/en/videos/.*.|.*.fod.infobase.com.jpllnet.sfsu.edu.*.|.*.player.vimeo.com.*.|.*.www.ted.com/talks/.*.)|"
+service_type = re.compile("(.*..*.youtu[\.]?be.*..*.|.*.vimeo.*.|.*.mediasite.*.|.*.dailymotion.*.|.*.presidio.*.|.*\.m4a|.*\.mov|.*\.mpg|.*\.mp4|.*.alexanderstreet.*.|.*./amara.org/en/videos/.*.|.*.fod.infobase.com.jpllnet.sfsu.edu.*.|.*.player.vimeo.com.*.|.*.www.ted.com/talks/.*.|.*./video/.*.|.*./video-clips/.*.|.*./videos/.*.|.*./podcasts/.*.|.*./v/.*.|.*.facebook.com/watch/\?v.*.)|"
                           "(.*\.pdf|.*\.docx|.*\.ppt|.*\.doc|.*\.pptx|.*\.jpg|.*\.rtf|.*\.pages|.*\.rar|.*\.xlsx|.*\.zip)", re.IGNORECASE)
 
 is_moodle_file = re.compile(".*.mod_resource|.*.mod_folder", re.IGNORECASE)
@@ -122,8 +123,10 @@ def identify_resource_type(link):
 
     if group:
         if group.group(1):
+            print("VIDEO", group.group(1))
             return "video"
         if group.group(2):
+            print("NOT VIDEO", group.group(2))
             return "file"
     else:
         return "Other"
@@ -144,8 +147,9 @@ def identify_if_moodle(link):
 def identify_link(link):
     group_regex = re.compile(moodle_content_id_regex, re.IGNORECASE)
     group = group_regex.match(link)
+    print("LINKKKKK", link)
     if group:
-
+        print("GROUP", group.groups(), "GROUP 2", group.group(2), group.group(3))
         if group.group(3):
             return "url"
         if group.group(4):
@@ -157,8 +161,10 @@ def identify_link(link):
         if group.group(7):
             return "resource"
         if group.group(8):
+            return "direct"
+        if group.group(9):
             return "file"
-        if group.group(9): # ereserve file link
+        if group.group(10): # ereserve file link
             return "file"
 
     else:

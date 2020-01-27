@@ -14,6 +14,11 @@ course_list_csv = r"C:\Users\913678186\Box\Servers\amp_dprc_db_server\course_imp
 
 def import_student_enrollement():
 
+    """
+    Adds raw student enrollement data to the 'studentenrollement' table. Table is truncated before adding.
+    """
+
+
     dbase_functions.clear_myDPRC_enroll_data()
 
     with open(course_enrollement_csv) as course_enrollement:
@@ -32,6 +37,9 @@ def import_student_enrollement():
 def import_all_courses():
 
     count = 0
+
+
+
     dbase_functions.clear_myDPRC_course_data()
 
     with open(course_list_csv) as course_list:
@@ -70,11 +78,13 @@ def import_all_courses():
                                                       instructor_email,
                                                       instructor_id)
 
-    print("THEEE COUNNTTTTTT", count)
+    print("THE COUNNTTTTTT", count)
 
 def add_items_to_tables():
     dbase_functions.refresh_instructor_table()
-    dbase_functions.add_courses_to_course_table('fa19')
+    # Term code must be set in backend under the 'current_enrollement' table def.
+    # semester must be set in 'current_student_courses' table def
+    dbase_functions.add_courses_to_course_table('sp20')
     dbase_functions.update_course_enrollement()
 
 

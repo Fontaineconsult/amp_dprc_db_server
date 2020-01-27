@@ -1,7 +1,7 @@
 import csv
 import amp_dprc_database.dbase_functions as db
 
-csv_link = "C:\\Users\\913678186\\Box\\Servers\\amp_dprc_db_server\\Queries\\ilearn_ids\\courseids.csv"
+csv_link = "C:\\Users\\913678186\\Box\\Servers\\amp_dprc_db_server\\course_importer_cs\\courses.csv"
 
 def add_ilearn_course_ids(semester):
 
@@ -35,9 +35,9 @@ def add_ilearn_course_ids(semester):
             except:
                 pass
 
-
+    print(course_id_list)
     db.commit_ilearn_id(course_id_list)
 
 
 
-add_ilearn_course_ids("fa19")
+add_ilearn_course_ids("sp20")

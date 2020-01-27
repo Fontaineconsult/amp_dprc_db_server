@@ -2,9 +2,11 @@ import csv
 import amp_dprc_database.dbase_functions as db
 
 
+"""
+myDPRC query must come from Manage Accommodations > List Accommodation Requests 
+"""
 
-
-video_accomm = "C:\\Users\\913678186\\Box\\Servers\\amp_dprc_db_server\\course_importer_myDPRC\\export (7).csv"
+video_accomm = "C:\\Users\\913678186\\Box\\Servers\\amp_dprc_db_server\\course_importer_myDPRC\\capcourses.csv"
 
 course_ids = []
 
@@ -12,44 +14,36 @@ def create_course_gen_id(semester):
 
 
     with open(video_accomm) as ilearn_ids:
-        csv_reader = csv.reader(ilearn_ids, delimiter=',')
+        csv_reader = csv.reader(ilearn_ids)
+
         for row in csv_reader:
-
-            try:
-
-
-                course_area = row[1]
-                course_number = row[2]
-                course_section = row[3]
-
-                fixed_course_name = "{}{}{}".format(course_area, course_number, course_section)
+            print(row)
 
 
 
-                course_gen_id = "{}{}".format(semester, str(fixed_course_name)
-                                              .replace(" ","")
-                                              .replace("-","")
-                                              .replace("_","")
-                                              .replace(":",""))
+            course_area = row[7]
+            course_number = row[8]
+            course_section = row[9]
 
+            fixed_course_name = "{}{}{}".format(course_area, course_number, course_section)
+            course_gen_id = "{}{}".format(semester, str(fixed_course_name)
+                                          .replace(" ","")
+                                          .replace("-","")
+                                          .replace("_","")
+                                          .replace(":",""))
 
-                course_ids.append(course_gen_id)
+            course_ids.append((course_gen_id, row[2], row[15]))
 
 
 
 
+create_course_gen_id("sp20")
 
 
+db.clear_video_accomm_status()
 
 
-            except:
-                pass
-
-
-
-create_course_gen_id("fa19")
-
-
-for course_id in course_ids:
-    print(course_id)
-    db.update_video_accomm(course_id)
+print(course_ids)
+for course in course_ids:
+    print(course)
+    db.update_video_accomm(course[0], course[1], course[2])

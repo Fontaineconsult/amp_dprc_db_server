@@ -5,6 +5,8 @@ from bs4 import BeautifulSoup
 import os, yaml
 import mimetypes
 
+
+
 ##! need workaround for servers not configured to return HEAD requests
 ##! section number on folders doesn't match actual section numbers.
 ##! mod URL pages need to be able to search for more than on link
@@ -205,7 +207,7 @@ def get_section_links(section_html):
         if link_url is not None:
             link_name_tuple = link_url, link_text, content_dimmed
             links.append(link_name_tuple)
-    print(links)
+
     return links
 
 
@@ -489,7 +491,9 @@ def master_link_sorter(section_links):
                         ##! make sure page search works
                         working_list.remove(resource)
 
-
+                    elif search[2] == 'direct':
+                        working_list.remove(resource)
+                        raw_resource_links.append( (search[0], resource_title, resource_hidden) )
                     elif search[1] in [301, 302, 303]:
                         working_list.remove(resource)
                         working_list.append( (search[0], resource_title, resource_hidden) )

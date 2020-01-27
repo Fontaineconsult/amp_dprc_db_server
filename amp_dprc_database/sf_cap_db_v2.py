@@ -36,9 +36,10 @@ class Enrollment(Base):
     student_id = Column(String, ForeignKey("student.student_id"), primary_key=True)
     student_enrolled = Column(Boolean)
     last_updated = Column(DateTime, default=datetime.utcnow())
-    student_requests_captioning = Column(Boolean)
+    student_requests_captioning = Column(Boolean, default=False)
     student = relationship("Student")
     course = relationship("Course")
+    accomm_added_date = Column(DateTime)
 
 
 class Employee(Base):
@@ -92,6 +93,9 @@ class Course(Base):
     course_online = Column(Boolean)
     no_students_enrolled = Column(Boolean)
     contact_email_sent = Column(Boolean)
+    contact_email_sent_date = Column(DateTime)
+    student_requests_captions_email_sent = Column(Boolean)
+    student_requests_captions_email_sent_date = Column(DateTime)
     no_student_enrolled_email_sent = Column(Boolean)
     course_comments = Column(String)
     activate_ilearn_video_notification_sent = Column(String)
@@ -99,9 +103,10 @@ class Course(Base):
                                   foreign_keys=[course_gen_id],
                                   primaryjoin='CourseIlearnID.course_gen_id == Course.course_gen_id',
                                   lazy='joined')
-    import_date = Column(DateTime)
+    import_date = Column(DateTime, default=datetime.utcnow)
     course_regestration_number = Column(String)
     instructor_requests_captioning = Column(Boolean)
+
 
 
 class CaptioningRequester(Base):
