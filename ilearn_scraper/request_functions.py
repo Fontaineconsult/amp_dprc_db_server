@@ -8,7 +8,7 @@ import os, yaml
 
 
 def load_config():
-    __path__ = os.path.join(os.path.dirname(__file__), "config.yaml").replace('/','//')
+    __path__ = os.path.join(os.path.dirname(__file__), "database_vars.yaml").replace('/','//')
     with open(__path__, 'r') as config:
         try:
             return yaml.load(config)

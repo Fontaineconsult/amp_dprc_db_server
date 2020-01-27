@@ -8,6 +8,19 @@ import sqlalchemy.exc
 from sqlalchemy.schema import CreateSchema
 Base = declarative_base()
 import traceback
+import yaml, os
+
+
+
+
+def load_config():
+    __path__ = os.path.join(os.path.dirname(__file__), "database_vars.yaml").replace('/','//')
+    with open(__path__, 'r') as config:
+        try:
+            return yaml.load(config)
+        except:
+            print("Error Loading Config File")
+            return None
 
 
 class PermissionType(Base):
@@ -282,9 +295,14 @@ class CaptionStudentCoursesView(Base):
 
 
 def get_dbase_session():
+    config = load_config()
+    database = "postgresql://{}:{}@{}/{}".format(config['username'],
+                                             config['password'],
+                                             config['server'],
+                                             config['config'])
 
     try:
-        engine = create_engine("postgresql://daniel:accessiblevids@130.212.104.17/captioning_v2",
+        engine = create_engine(database,
                                connect_args={'options': '-csearch_path={}'.format("main_1")},
                                client_encoding='utf8')
         Base.metadata.create_all(engine)
@@ -298,9 +316,16 @@ def get_dbase_session():
         pass
 
 if __name__ == '__main__':
+
+    config = load_config()
+    database = "postgresql://{}:{}@{}/{}".format(config['username'],
+                                                 config['password'],
+                                                 config['server'],
+                                                 config['database'])
+
     try:
 
-        engine = create_engine("postgresql://daniel:accessiblevids@130.212.104.17/captioning_v2",
+        engine = create_engine(database,
                                connect_args={'options': '-csearch_path={}'.format("main_1"), 'sslmode': 'verify-ca',
                                              'connect_timeout': 3, "sslrootcert": "C:\\Users\\913678186\\Box\\Servers\\amp_dprc_db_server\\ssl\\root.crt",
                                              "sslkey": "C:\\Users\\913678186\\Box\\Servers\\amp_dprc_db_server\\ssl\\postgresql\\postgresql.key",
