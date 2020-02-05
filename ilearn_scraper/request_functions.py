@@ -8,7 +8,7 @@ import os, yaml
 
 
 def load_config():
-    __path__ = os.path.join(os.path.dirname(__file__), "database_vars.yaml").replace('/','//')
+    __path__ = os.path.join(os.path.dirname(__file__), "config.yaml").replace('/','//')
     with open(__path__, 'r') as config:
         try:
             return yaml.load(config)
@@ -139,8 +139,13 @@ def get_ereserves_page(resource_url, *session):
 
 @iLearn_login_session
 def get_ilearn_resource(resource_url, *session):
-    session = session[0]
-    resource = session.get(resource_url, verify=False)
+
+    try:
+        session = session[0]
+        resource = session.get(resource_url, verify=False)
+    except (requests.exceptions.ConnectionError):
+        dr.log_error("HEAD REQUEST: Failed to establish a new connection, Max Retries", resource_url, traceback.format_exc())
+        return None
     return resource.content
 
 

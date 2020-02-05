@@ -157,6 +157,18 @@ def get_folder_links(link):
     return folder_links
 
 
+def search_raw_text_for_video(section_text):
+
+    section_text = section_text.findAll(text=True)
+    print("TEXT", section_text)
+    if section_text is not None:
+        print("_____")
+        for each_string in section_text:
+            for string in each_string.split():
+                if regexs.identify_resource_type(string) == 'video':
+                    yield string
+
+
 def filter_first_level_iframe(page_html):
     first_level_iframe_src = []
     first_level_iframes = page_html.find_all("iframe")
@@ -208,6 +220,10 @@ def get_section_links(section_html):
             link_name_tuple = link_url, link_text, content_dimmed
             links.append(link_name_tuple)
 
+    raw_html_check = list(search_raw_text_for_video(section_html))
+    for each in raw_html_check:
+        links.append((each, None, None))
+
     return links
 
 
@@ -229,7 +245,12 @@ def get_section_summary(section_html):
     return section_summary
 
 def get_mod_resource_page_link(link):
+
     mod_url_page_html = rf.get_ilearn_resource(link)
+
+    if mod_url_page_html is None:
+        return None
+
     div_main = BeautifulSoup(mod_url_page_html, "lxml").find("div", {"role": "main"})
 
 

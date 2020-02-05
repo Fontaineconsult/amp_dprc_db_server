@@ -10,6 +10,7 @@ class _IlearnCourseSection:
         self.section_id = section_id
         self.section_content = section_content
         self.section_summary = ifilter.get_section_summary(section_content)
+
         self.raw_section_links = (self.section_id, ifilter.get_section_links(section_content))
         self.section_resources = ifilter.sort_for_content_links(self.raw_section_links)
         self.suspect_links = []

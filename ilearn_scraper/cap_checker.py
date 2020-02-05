@@ -100,6 +100,8 @@ def cap_check_single(page_id, course_gen_id):
 #            ("SP20PA71501", "14831"),
 #            ("SP20BIOL613GW05", "12116")
 #            ]
+#
+# cap_check_single('15067', 'sp20AFRS46601')
 
 
 
