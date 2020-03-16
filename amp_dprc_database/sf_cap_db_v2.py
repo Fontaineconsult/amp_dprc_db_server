@@ -107,7 +107,7 @@ class Course(Base):
     no_students_enrolled = Column(Boolean)
     contact_email_sent = Column(Boolean)
     contact_email_sent_date = Column(DateTime)
-    student_requests_captions_email_sent = Column(Boolean)
+    student_requests_captions_email_sent = Column(Boolean, default=False)
     student_requests_captions_email_sent_date = Column(DateTime)
     no_student_enrolled_email_sent = Column(Boolean)
     course_comments = Column(String)
@@ -161,6 +161,13 @@ class CaptioningMedia(Base):
     comments = Column(String)
     date_added = Column(DateTime, default=datetime.utcnow)
 
+class CaptioningRequest(Base):
+
+    __tablename__ = 'captioning_request'
+    id = Column(Integer,  primary_key=True)
+    requester_id = Column(Integer, ForeignKey('captioning_requester.id'))
+    media_id = Column(Integer, ForeignKey('captioning_media.id'))
+    delivery_format = Column(String)
 
 class CaptioningJob(Base):
 
@@ -299,7 +306,7 @@ def get_dbase_session():
     database = "postgresql://{}:{}@{}/{}".format(config['username'],
                                              config['password'],
                                              config['server'],
-                                             config['config'])
+                                             config['database'])
 
     try:
         engine = create_engine(database,

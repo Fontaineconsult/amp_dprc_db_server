@@ -36,14 +36,13 @@ links_to_remove = re.compile("(https://ilearn.support.at.sfsu.edu/ay1920/mod/)("
                              "(forum/.+)|"
                              "(quiz/.+)|"
                              "(glossary/.+)"
-                             "(zoom/:.+))|"
                              "(mailto:.+)|"
                              "(https://email.sfsu.edu/owa/.+)|"
                              "(https://ilearn.support.at.sfsu.edu/ay1920/course/view.php\?id=\d{0,7}#section-\d+)|"
                              "(https://ilearn.support.at.sfsu.edu/ay1920/course/view.php?id=[0-9]{0,7})|"
                              "(\A#{1}.+)|"
                              "(https://ilearn.sfsu.edu/.+)|"
-                             "https://presidio.at.sfsu.edu/.+")
+                             "https://presidio.at.sfsu.edu/.+)")
 
 
 # e_reserve_link = re.compile()
@@ -60,11 +59,11 @@ first_level_mediasite_links = re.compile("https://ilearn.support.at.sfsu.edu/ay1
 
 url_id = re.compile("[0-9]{5,7}")
 
-resource_type = re.compile("(.*\.m4a|.*\.mov|.*\.mpg|.*\.mp4|.*..*.youtu[\.]?be.*..*.|.*.vimeo.*.|.*.mediasite.*.|.*.dailymotion.*.|.*.presidioresource.*.|.*.alexanderstreet.*.|.*./amara.org/en/videos/.*.|.*.fod.infobase.com.jpllnet.sfsu.edu.*.|.*.player.vimeo.com.*.|.*.www.ted.com/talks/.*.|.*./video-clips/.*.|.*./video/.*.|.*./videos/.*.|.*./v/.*.|.*./podcasts/.*.|.*.facebook.com/watch/\?v.*.)|"
+resource_type = re.compile("(.*\.m4a|.*\.mov|.*\.mpg|.*\.mp4|.*..*.youtu[\.]?be.*..*.|.*.vimeo.*.|.*.mediasite.*.|.*.dailymotion.*.|.*.presidioresource.*.|.*.alexanderstreet.*.|.*./amara.org/en/videos/.*.|.*.fod.infobase.com.jpllnet.sfsu.edu.*.|.*.player.vimeo.com.*.|.*.www.ted.com/talks/.*.|.*./video-clips/.*.|.*./video/.*.|.*./videos/.*.|.*./v/.*.|.*./podcasts/.*.|.*.diva.sfsu.edu.*.|.*./media/.*.|.*.sfsu.zoom.us.*.|.*.facebook.com/watch/\?v.*.)|"
                            "(.*\.pdf|.*\.docx|.*\.ppt|.*\.doc|.*\.pptx|.*\.jpg|.*\.rtf|.*\.pages|.*\.rar|.*\.xlsx|.*\.zip|.*\.m4a|.*\.mov|.*\.mpg|.*\.mp4)", re.IGNORECASE)
 
 
-service_type = re.compile("(.*..*.youtu[\.]?be.*..*.|.*.vimeo.*.|.*.mediasite.*.|.*.dailymotion.*.|.*.presidio.*.|.*\.m4a|.*\.mov|.*\.mpg|.*\.mp4|.*.alexanderstreet.*.|.*./amara.org/en/videos/.*.|.*.fod.infobase.com.jpllnet.sfsu.edu.*.|.*.player.vimeo.com.*.|.*.www.ted.com/talks/.*.|.*./video/.*.|.*./video-clips/.*.|.*./videos/.*.|.*./podcasts/.*.|.*./v/.*.|.*.facebook.com/watch/\?v.*.)|"
+service_type = re.compile("(.*..*.youtu[\.]?be.*..*.|.*.vimeo.*.|.*.mediasite.*.|.*.dailymotion.*.|.*.presidio.*.|.*\.m4a|.*\.mov|.*\.mpg|.*\.mp4|.*.alexanderstreet.*.|.*./amara.org/en/videos/.*.|.*.fod.infobase.com.jpllnet.sfsu.edu.*.|.*.player.vimeo.com.*.|.*.www.ted.com/talks/.*.|.*./video/.*.|.*./video-clips/.*.|.*./videos/.*.|.*./podcasts/.*.|.*./media/.*.|.*.sfsu.zoom.us.*.|.*.diva.sfsu.edu.*.|.*./v/.*.|.*.facebook.com/watch/\?v.*.)|"
                           "(.*\.pdf|.*\.docx|.*\.ppt|.*\.doc|.*\.pptx|.*\.jpg|.*\.rtf|.*\.pages|.*\.rar|.*\.xlsx|.*\.zip)", re.IGNORECASE)
 
 is_moodle_file = re.compile(".*.mod_resource|.*.mod_folder", re.IGNORECASE)

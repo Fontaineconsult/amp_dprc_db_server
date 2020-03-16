@@ -108,7 +108,7 @@ def get_resources_header(resource_url, *session):
     session = session[0]
     try:
         print("trying to get head for", resource_url)
-        header = session.head(resource_url, verify=False)
+        header = session.head(resource_url, verify=False, timeout=10)
         print(header.headers, resource_url)
         return header
     except (requests.exceptions.SSLError,
