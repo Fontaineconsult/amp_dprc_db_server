@@ -5,14 +5,14 @@ import itertools
 
 from amp_dprc_database import dbase_functions
 
-course_enrollement_csv = r"C:\Users\913678186\Box\Servers\amp_dprc_db_server\course_importer_myDPRC\Courses.txt"
-course_list_csv = r"C:\Users\913678186\Box\Servers\amp_dprc_db_server\course_importer_myDPRC\Classlist.txt"
+course_enrollement_csv = r"C:\Users\DanielPC\Desktop\Servers\amp_dprc_db_server\course_importer_myDPRC\Courses.txt"
+course_list_csv = r"C:\Users\DanielPC\Desktop\Servers\amp_dprc_db_server\course_importer_myDPRC\Classlist.txt"
 
 
 
 
 
-def import_student_enrollement():
+def import_student_enrollement(term_code):
 
     """
     Adds raw student enrollement data to the 'studentenrollement' table. Table is truncated before adding.
@@ -27,14 +27,16 @@ def import_student_enrollement():
         csv_reader = itertools.islice(csv_reader, 1, None)
         for row in csv_reader:
 
-            print(row[0], row[2])
-            dbase_functions.commit_myDPRC_student_enrollement(row[0], row[2])
+            print(row[1])
+            if row[1] == term_code:
+                print(row[0], row[1], row[2])
+                dbase_functions.commit_myDPRC_student_enrollement(row[0], row[2])
 
 
 
 
 
-def import_all_courses():
+def import_all_courses(term_code):
 
     count = 0
 
@@ -51,9 +53,7 @@ def import_all_courses():
 
         for row in csv_reader:
 
-
-            count += 1
-            term_code = row[0]
+            course_term_code = row[0]
             course_reg_number = row[1]
             subject_code = row[2]
             course_number = row[3]
@@ -66,28 +66,32 @@ def import_all_courses():
             instructor_email = row[19]
             instructor_id = row[20]
 
-            print(instructor_name, instructor_email, instructor_id)
 
-            dbase_functions.commit_myDPRC_course_data(course_reg_number,
-                                                      term_code,
-                                                      subject_code,
-                                                      course_number,
-                                                      section_number,
-                                                      class_title,
-                                                      instructor_name,
-                                                      instructor_email,
-                                                      instructor_id)
+            if course_term_code == term_code:
+                count += 1
+                print(instructor_name, instructor_email, instructor_id)
+                dbase_functions.commit_myDPRC_course_data(course_reg_number,
+                                                          term_code,
+                                                          subject_code,
+                                                          course_number,
+                                                          section_number,
+                                                          class_title,
+                                                          instructor_name,
+                                                          instructor_email,
+                                                          instructor_id)
 
     print("THE COUNNTTTTTT", count)
 
-def add_items_to_tables():
+def add_items_to_tables(semester):
     dbase_functions.refresh_instructor_table()
     # Term code must be set in backend under the 'current_enrollement' table def.
     # semester must be set in 'current_student_courses' table def
-    dbase_functions.add_courses_to_course_table('sp20')
+    dbase_functions.add_courses_to_course_table(semester)
     dbase_functions.update_course_enrollement()
 
 
-import_student_enrollement()
-import_all_courses()
-add_items_to_tables()
+
+## Make sure these are set correctly
+import_student_enrollement('2205')
+import_all_courses('2205')
+add_items_to_tables('su20')

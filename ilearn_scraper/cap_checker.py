@@ -13,7 +13,7 @@ import requests, json
 def cap_checker_function():
     open_iLearn_connection()
 
-    ilearn_page_ids = get_all_course_ilearn_ids("sp20")
+    ilearn_page_ids = get_all_course_ilearn_ids("su20")
 
 
     if ilearn_page_ids is not None:
@@ -40,7 +40,7 @@ def cap_checker_function():
                         cap_status = json.loads(cap_status_request.content)
 
                         # commit_ilearn_video_content(resource['title'], fix.fix_mediasite_link(resource['link']), page_id[1], cap_status["cap-state"], section['section']) //depreciated
-                        add_scraped_videos(resource['title'], fix.fix_mediasite_link(resource['link']), page_id[1], cap_status["cap-state"], page_id[0], section['section'], "sp20")
+                        add_scraped_videos(resource['title'], fix.fix_mediasite_link(resource['link']), page_id[1], cap_status["cap-state"], page_id[0], section['section'], "su20")
 
 
 def cap_check_single(page_id, course_gen_id):
@@ -65,7 +65,7 @@ def cap_check_single(page_id, course_gen_id):
                 print(cap_status_request.content)
                 cap_status = json.loads(cap_status_request.content)
 
-                add_scraped_videos(resource['title'], fix.fix_mediasite_link(resource['link']), page_id, cap_status["cap-state"], course_gen_id, section['section'], 'sp20')
+                add_scraped_videos(resource['title'], fix.fix_mediasite_link(resource['link']), page_id, cap_status["cap-state"], course_gen_id, section['section'], 'su20')
                 pass
 
 

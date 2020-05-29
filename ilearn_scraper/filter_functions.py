@@ -58,14 +58,22 @@ class InternalResource:
 
         elif self.moodle_resource:
             print("moodle resource", self.resource_title)
-            file_name = self.resource_link.rsplit('/', 1)[-1].encode('utf-8').translate(str.maketrans('', '', '?'))
-            self.downloadable = True
+            try:
+                file_name = self.resource_link.rsplit('/', 1)[-1].encode('utf-8').translate(str.maketrans('', '', '?'))
+                self.downloadable = True
 
-            if self.resource_title is None:
-                self.resource_title = file_name
+                if self.resource_title is None:
+                    self.resource_title = file_name
 
-            if self.resource_type == 'Other': # in case file name is missing extension
-                self.resource_type = 'file'
+                if self.resource_type == 'Other': # in case file name is missing extension
+                    self.resource_type = 'file'
+
+            except:
+                if self.resource_title is None:
+                    self.resource_title = "no_title_error"
+                if self.resource_type == 'Other': # in case file name is missing extension
+                    self.resource_type = 'file'
+
         else:
             pass ##! not sure what is going on here
 

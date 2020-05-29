@@ -1,7 +1,7 @@
 import csv
 import amp_dprc_database.dbase_functions as db
 
-csv_link = "C:\\Users\\913678186\\Box\\Servers\\amp_dprc_db_server\\course_importer_cs\\courses.csv"
+csv_link = "C:\\Users\\DanielPC\\Desktop\\Servers\\amp_dprc_db_server\\course_importer_cs\\courseids-Summer-2020.csv"
 
 def add_ilearn_course_ids(semester):
 
@@ -40,4 +40,4 @@ def add_ilearn_course_ids(semester):
 
 
 
-add_ilearn_course_ids("sp20")
+add_ilearn_course_ids("su20")

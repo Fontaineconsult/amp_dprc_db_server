@@ -6,7 +6,8 @@ import amp_dprc_database.dbase_functions as db
 myDPRC query must come from Manage Accommodations > List Accommodation Requests 
 """
 
-video_accomm = "C:\\Users\\913678186\\Box\\Servers\\amp_dprc_db_server\\course_importer_myDPRC\\capcourses.csv"
+video_accomm = "C:\\Users\\DanielPC\\Desktop\\Servers\\amp_dprc_db_server\\course_importer_myDPRC\\capcourses.csv"
+
 
 course_ids = []
 
@@ -25,6 +26,10 @@ def create_course_gen_id(semester):
             course_number = row[8]
             course_section = row[9]
 
+            if len(course_section) == 1:
+                course_section = "0" + course_section
+
+
             fixed_course_name = "{}{}{}".format(course_area, course_number, course_section)
             course_gen_id = "{}{}".format(semester, str(fixed_course_name)
                                           .replace(" ","")
@@ -37,7 +42,7 @@ def create_course_gen_id(semester):
 
 
 
-create_course_gen_id("sp20")
+create_course_gen_id("su20")
 
 
 db.clear_video_accomm_status()
