@@ -28,8 +28,14 @@ ereserves_base_url = load_config()['ereserves_base_url']
 
 
 def open_iLearn_connection():
-    global ilearn_session
 
+    check_support_site_status = requests.get("https://ilearn.support.at.sfsu.edu/ay1920/login/index.php", verify=False)
+    if check_support_site_status.history[0].status_code == 303:
+        print("Support site down")
+        return False
+
+
+    global ilearn_session
     config_file = load_config()
 
     url = config_file['iLearn_page']
@@ -42,6 +48,7 @@ def open_iLearn_connection():
         ilearn_session.get(url, verify=False)
         if ilearn_session.cookies.get_dict():
             ilearn_session.post(url, data=login_data, headers=referer, verify=False)
+
             return True
         else:
             ilearn_session = None
