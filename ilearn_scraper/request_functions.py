@@ -29,10 +29,10 @@ ereserves_base_url = load_config()['ereserves_base_url']
 
 def open_iLearn_connection():
 
-    check_support_site_status = requests.get("https://ilearn.support.at.sfsu.edu/ay1920/login/index.php", verify=False)
-    if check_support_site_status.history[0].status_code == 303:
-        print("Support site down")
-        return False
+    # check_support_site_status = requests.get("https://ilearn.support.at.sfsu.edu/ay1920/login/index.php", verify=False)
+    # if check_support_site_status.history[0].status_code == 303:
+    #     print("Support site down")
+    #     return False
 
 
     global ilearn_session
