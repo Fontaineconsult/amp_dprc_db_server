@@ -40,16 +40,12 @@ def import_all_courses(term_code):
 
     count = 0
 
-
-
     dbase_functions.clear_myDPRC_course_data()
 
     with open(course_list_csv) as course_list:
 
         csv_reader = csv.reader(course_list, delimiter='\t')
         csv_reader = itertools.islice(csv_reader, 1, None)
-
-
 
         for row in csv_reader:
 
@@ -92,6 +88,6 @@ def add_items_to_tables(semester):
 
 
 ## Make sure these are set correctly
-import_student_enrollement('2205')
-import_all_courses('2205')
-add_items_to_tables('su20')
+import_student_enrollement('2207')
+import_all_courses('2207')
+add_items_to_tables('fa20')

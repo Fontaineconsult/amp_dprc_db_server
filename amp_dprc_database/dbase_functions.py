@@ -5,13 +5,39 @@ from amp_dprc_database.sf_cap_db_v2 import get_dbase_session,\
     Student, Employee, Course, Enrollment,\
     CourseIlearnID, myDPRCStudentEnrollemet, myDPRCRawCourseList,\
     CaptionStudentCoursesView, DroppedCoursesDiffView,\
-    ScrapediLearnVideos
+    ScrapediLearnVideos, CourseIlearnTable
 import sqlalchemy.orm.exc as db_error
 import sqlalchemy.exc as core_db_error
 import datetime, traceback
 
 
 session = get_dbase_session()
+
+
+
+def add_student(student_id, student_first_name, student_last_name, student_email, captioning_active, transcripts_only):
+    try:
+        session.query(Student).filter(Student.student_id==student_id).one()
+        print("already found student")
+    except db_error.NoResultFound:
+        new_student = Student(student_id=student_id,
+                                 student_first_name=student_first_name,
+                                 student_last_name=student_last_name,
+                                 student_email=student_email,
+                                 captioning_active=captioning_active,
+                                 transcripts_only=transcripts_only)
+
+        try:
+            session.add(new_student)
+            print("Adding New Student ", student_id)
+            session.commit()
+        except:
+            session.rollback()
+            print("Something went wrong with the instructor")
+
+
+
+
 
 def get_all_enrolled_courses():
     all_enrolled = []
@@ -43,7 +69,7 @@ def get_all_students_ids():
 def check_or_commit_instructor(instructor_data):
 
     try:
-        instructor_query = session.query(Employee).filter_by(instructor_id=instructor_data["instructor_id"]).one()
+        instructor_query = session.query(Employee).filter(Employee.employee_id==instructor_data["instructor_id"]).one()
         print("already found instructor")
     except db_error.NoResultFound:
         new_instructor = Employee(employee_id=instructor_data["instructor_id"],
@@ -63,7 +89,7 @@ def check_or_commit_instructor(instructor_data):
 def check_or_commit_course(course_data):
 
     try:
-        course_query = session.query(Course).filter_by(course_gen_id=course_data["course_gen_id"]).one()
+        course_query = session.query(Course).filter(Course.course_gen_id==course_data["course_gen_id"]).one()
         print("already found course")
 
     except db_error.NoResultFound:
@@ -123,18 +149,25 @@ def commit_ilearn_id(course_id_pair):
         print(each_pair)
 
         try:
-            session.query(CourseIlearnID).filter_by(ilearn_page_id=each_pair[0], course_gen_id=each_pair[1]).one()
+            session.query(CourseIlearnTable).filter_by(course_gen_id=each_pair[1]).one()
+            print("Already there ", each_pair[0])
         except db_error.NoResultFound:
 
-            course_ilearn_id_commit = CourseIlearnID(ilearn_page_id=each_pair[0], course_gen_id=each_pair[1])
+            course_ilearn_id_commit = CourseIlearnTable(ilearn_page_id=each_pair[0], course_gen_id=each_pair[1])
             session.add(course_ilearn_id_commit)
-            session.commit()
-            print("commited new id", each_pair[0], each_pair[1])
+            print("adding new id", each_pair[0], each_pair[1])
+
+
+
+    session.commit()
+
+
+
 
 
 def get_all_course_ilearn_ids(semester):
     missing_ids = 0
-    ilearn_id_query = session.query(Course).filter_by(semester=semester).all()
+    ilearn_id_query = session.query(Course).filter(Course.semester==semester).all()
     ilearn_ids = []
     for each in ilearn_id_query:
 
@@ -214,7 +247,7 @@ def refresh_instructor_table():
     for each in query:
             if len(each.instructor_id) == 9:
                 try:
-                    check_if_instructor_exists = session.query(Employee).filter_by(employee_id=each.instructor_id).one()
+                    check_if_instructor_exists = session.query(Employee).filter(Employee.employee_id==each.instructor_id).one()
 
                 except db_error.NoResultFound:
 
@@ -237,10 +270,10 @@ def add_courses_to_course_table(semester):
     for each in query:
         print(each.course_gen_key)
         if len(each.instructor_id) == 9:
-            try:
-                check_if_course_exists = session.query(Course).filter_by(course_gen_id=each.course_gen_key).one()
 
-            except db_error.NoResultFound:
+
+            check_if_course_exists = session.query(Course.course_gen_id).filter(Course.course_gen_id == each.course_gen_key).scalar()
+            if not check_if_course_exists:
                 print("course doesn't exist, adding")
                 new_course = Course(course_gen_id=each.course_gen_key,
                                     course_name="{}{}{}".format(each.subject_code, " ", each.course_number),

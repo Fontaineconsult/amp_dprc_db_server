@@ -42,7 +42,7 @@ def create_course_gen_id(semester):
 
 
 
-create_course_gen_id("su20")
+create_course_gen_id("fa20")
 
 
 db.clear_video_accomm_status()
