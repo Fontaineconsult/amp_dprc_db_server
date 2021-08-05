@@ -339,7 +339,7 @@ class ScrapediLearnVideos(Base):
     captioned_version = relationship(CaptioningMedia, foreign_keys=[resource_link],
                                      lazy='joined',
                                      primaryjoin='CaptioningMedia.source_url == ScrapediLearnVideos.resource_link')
-
+    content_hidden = Column(Boolean, default=False)
 
 class DroppedCoursesDiffView(Base):
 
@@ -437,26 +437,48 @@ class CaptionStudentCoursesView(Base):
 
 
 
-def get_dbase_session():
+def get_dbase_session(database_var="database"):
     config = load_config()
     database = "postgresql://{}:{}@{}/{}".format(config['username'],
                                              config['password'],
                                              config['server'],
                                              config['database'])
 
-    try:
-        engine = create_engine(database,
-                               connect_args={'options': '-csearch_path={}'.format("main_1")},
-                               client_encoding='utf8')
-        Base.metadata.create_all(engine)
+    dev_database = "postgresql://{}:{}@{}/{}".format(config['username'],
+                                                     config['password'],
+                                                     config['server'],
+                                                     config['dev_database'])
 
-        DBsession = sessionmaker(bind=engine)
-        session = DBsession()
-        print("Database Connected", database)
-        return session
-    except:
-        print(traceback.print_exc())
-        pass
+    if database_var=="database":
+
+        try:
+            engine = create_engine(database,
+                                   connect_args={'options': '-csearch_path={}'.format("main_1")},
+                                   client_encoding='utf8')
+            Base.metadata.create_all(engine)
+
+            DBsession = sessionmaker(bind=engine)
+            session = DBsession()
+            print("Database Connected", database)
+            return session
+        except:
+            print(traceback.print_exc())
+            pass
+
+    else:
+        try:
+            engine = create_engine(dev_database,
+                                   connect_args={'options': '-csearch_path={}'.format("main_1")},
+                                   client_encoding='utf8')
+            Base.metadata.create_all(engine)
+
+            DBsession = sessionmaker(bind=engine)
+            session = DBsession()
+            print("Database Connected", database)
+            return session
+        except:
+            print(traceback.print_exc())
+            pass
 
 
 #
@@ -471,6 +493,11 @@ if __name__ == '__main__':
                                                  config['password'],
                                                  config['server'],
                                                  config['database'])
+
+    dev_database = "postgresql://{}:{}@{}/{}".format(config['username'],
+                                                 config['password'],
+                                                 config['server'],
+                                                 config['dev_database'])
 
     try:
 

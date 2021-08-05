@@ -406,7 +406,7 @@ def update_course_enrollement():
     drop_enrollment_from_diff_table()
 
 
-def add_scraped_videos(title, link, course_id, caption_state, course_gen_id, section, semester):
+def add_scraped_videos(title, link, course_id, caption_state, course_gen_id, section, semester, scraped_content_hidden):
 
     scraped_video_check = session.query(ScrapediLearnVideos).filter_by(resource_link=link).filter_by(course_gen_id=course_gen_id).first()
 
@@ -415,10 +415,10 @@ def add_scraped_videos(title, link, course_id, caption_state, course_gen_id, sec
         video_resource = ScrapediLearnVideos(resource_link=link,
                                              title=title,
                                              course_ilearn_id=course_id,
-                                             captioned=caption_state,
                                              course_gen_id=course_gen_id,
                                              page_section=section,
-                                             semester=semester)
+                                             semester=semester,
+                                             content_hidden=scraped_content_hidden)
 
         session.add(video_resource)
         session.commit()
@@ -427,13 +427,16 @@ def add_scraped_videos(title, link, course_id, caption_state, course_gen_id, sec
         print(scraped_video_check.title, scraped_video_check.captioned, title, caption_state)
         if scraped_video_check.title is None:
             scraped_video_check.title = title
-        if scraped_video_check.captioned is None or scraped_video_check.captioned is False:
-            scraped_video_check.captioned = caption_state
+        # if scraped_video_check.captioned is None or scraped_video_check.captioned is False:
+        #     scraped_video_check.captioned = caption_state
         else:
             print("already exists")
 
         if scraped_video_check.page_section is None:
             scraped_video_check.page_section = section
+
+        if scraped_video_check.content_hidden != scraped_content_hidden:
+            scraped_video_check.content_hidden = scraped_content_hidden
 
         session.commit()
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="130.212.104.17" id="71c9acca-91a6-4e7a-9bd9-a230760cacf9" port="22" customName="dprc-amp" nameFormat="CUSTOM" username="daniel" />
+      <sshConfig authType="PASSWORD" host="130.212.104.17" id="2a56de8f-7199-4c78-813c-3faf85395fa7" port="22" customName="dprc-amp" nameFormat="CUSTOM" username="daniel" />
+    </configs>
+  </component>
+</project>

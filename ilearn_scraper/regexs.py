@@ -26,11 +26,11 @@ direct_external_links = re.compile("https://www.youtube.com/watch\?v=.{11}|"
 
 #links to folders with multiple downloads.
 
-folder_links = re.compile(r"(https://ilearn.support.at.sfsu.edu/ay1920/mod/)" + folders_group)
+folder_links = re.compile(r"(https://ilearn.support.at.sfsu.edu/ay2021/mod/)" + folders_group)
 
 
 
-links_to_remove = re.compile("(https://ilearn.support.at.sfsu.edu/ay1920/mod/)("
+links_to_remove = re.compile("(https://ilearn.support.at.sfsu.edu/ay2021/mod/)("
                              "(turnitintooltwo/.+)|"
                              "(attendance/.+)|"
                              "(forum/.+)|"
@@ -38,32 +38,35 @@ links_to_remove = re.compile("(https://ilearn.support.at.sfsu.edu/ay1920/mod/)("
                              "(glossary/.+)"
                              "(mailto:.+)|"
                              "(https://email.sfsu.edu/owa/.+)|"
-                             "(https://ilearn.support.at.sfsu.edu/ay1920/course/view.php\?id=\d{0,7}#section-\d+)|"
-                             "(https://ilearn.support.at.sfsu.edu/ay1920/course/view.php?id=[0-9]{0,7})|"
+                             "(https://ilearn.support.at.sfsu.edu/ay2021/course/view.php\?id=\d{0,7}#section-\d+)|"
+                             "(https://ilearn.support.at.sfsu.edu/ay2021/course/view.php?id=[0-9]{0,7})|"
                              "(\A#{1}.+)|"
-                             "(https://ilearn.sfsu.edu/.+)|"
-                             "https://presidio.at.sfsu.edu/.+)")
+                             "(https://ilearn.sfsu.edu/.+))|"
+                             "(.*.action=grading|.*.action=grading.*.)|(.*.action=grader|.*.action=grader.*.)|"
+                             "(.*.modedit.php.*.)")
 
 
 # e_reserve_link = re.compile()
 
 
 
-moodle_content_id_regex = "https://ilearn.support.at.sfsu.edu/ay1920/mod/(((url|mediasite)|" \
-                          "(page)|(assign)|(folder)|(resource)|(presidioresource))/view.php\?id=[0-9]{0,7})|" \
-                          "(.*\.pdf|.*\.docx|.*\.ppt|.*\.doc|.*\.pptx|.*\.jpg|.*\.rtf|.*\.m4a|.*\.pages|.*\.rar|.*\.xlsx|.*\.zip)|" \
-                          "(https://diva.sfsu.edu/bundles/[0-9]{5,8}/download)"
+moodle_content_id_regex = re.compile("https://ilearn.support.at.sfsu.edu/ay2021/mod/(((url|mediasite)|"
+                          "(page)|(assign)|(folder)|(resource)|(presidioresource))/view.php\?id=[0-9]{0,7})|"
+                          "(.*\.pdf|.*\.docx|.*\.ppt|.*\.doc|.*\.pptx|.*\.jpg|.*\.rtf|.*\.m4a|.*\.pages|.*\.rar|.*\.xlsx|.*\.zip)|"
+                          "(https://diva.sfsu.edu/bundles/[0-9]{5,8}/download)|https://presidio.at.sfsu.edu/media/.*.", re.IGNORECASE)
 
-first_level_mediasite_links = re.compile("https://ilearn.support.at.sfsu.edu/ay1920/mod/mediasite/view.php\?id=.+")
+first_level_mediasite_links = re.compile("https://ilearn.support.at.sfsu.edu/ay2021/mod/mediasite/view.php\?id=.+")
 
 
 url_id = re.compile("[0-9]{5,7}")
 
-resource_type = re.compile("(.*\.m4a|.*\.mov|.*\.mpg|.*\.mp4|.*..*.youtu[\.]?be.*..*.|.*.vimeo.*.|.*.mediasite.*.|.*.dailymotion.*.|.*.presidioresource.*.|.*.alexanderstreet.*.|.*./amara.org/en/videos/.*.|.*.fod.infobase.com.jpllnet.sfsu.edu.*.|.*.player.vimeo.com.*.|.*.www.ted.com/talks/.*.|.*./video-clips/.*.|.*./video/.*.|.*./videos/.*.|.*./v/.*.|.*./podcasts/.*.|.*.diva.sfsu.edu.*.|.*./media/.*.|.*.sfsu.zoom.us.*.|.*.facebook.com/watch/\?v.*.)|"
+resource_type = re.compile("(.*\.m4a|.*\.mov|.*\.mpg|.*\.mp4|.*..*.youtu[\.]?be.*..*.|.*.vimeo.*.|.*.mediasite.*.|.*.dailymotion.*.|.*.presidioresource.*.|.*.alexanderstreet.*.|.*./amara.org/en/videos/.*.|.*.fod.infobase.com.jpllnet.sfsu.edu.*.|.*.player.vimeo.com.*.|.*.www.ted.com/talks/.*.|.*./video-clips/.*.|.*./video/.*.|.*./videos/.*.|.*./v/.*.|https://sfstate-primo.hosted.exlibrisgroup.com/.*.|.*./podcasts/.*.|https://presidio.at.sfsu.edu/media/.*.|.*.diva.sfsu.edu.*.|.*./media/.*.|.*.sfsu.zoom.us.*.|.*.facebook.com/watch/\?v.*.)|"
                            "(.*\.pdf|.*\.docx|.*\.ppt|.*\.doc|.*\.pptx|.*\.jpg|.*\.rtf|.*\.pages|.*\.rar|.*\.xlsx|.*\.zip|.*\.m4a|.*\.mov|.*\.mpg|.*\.mp4)", re.IGNORECASE)
 
 
-service_type = re.compile("(.*..*.youtu[\.]?be.*..*.|.*.vimeo.*.|.*.mediasite.*.|.*.dailymotion.*.|.*.presidio.*.|.*\.m4a|.*\.mov|.*\.mpg|.*\.mp4|.*.alexanderstreet.*.|.*./amara.org/en/videos/.*.|.*.fod.infobase.com.jpllnet.sfsu.edu.*.|.*.player.vimeo.com.*.|.*.www.ted.com/talks/.*.|.*./video/.*.|.*./video-clips/.*.|.*./videos/.*.|.*./podcasts/.*.|.*./media/.*.|.*.sfsu.zoom.us.*.|.*.diva.sfsu.edu.*.|.*./v/.*.|.*.facebook.com/watch/\?v.*.)|"
+#https://sfstate-primo.hosted.exlibrisgroup.com/ ADD THIS
+
+service_type = re.compile("(.*..*.youtu[\.]?be.*..*.|.*.vimeo.*.|.*.mediasite.*.|.*.dailymotion.*.|.*.presidio.*.|.*\.m4a|.*\.mov|.*\.mpg|.*\.mp4|.*.alexanderstreet.*.|.*./amara.org/en/videos/.*.|.*.fod.infobase.com.jpllnet.sfsu.edu.*.|.*.player.vimeo.com.*.|.*.www.ted.com/talks/.*.|.*./video/.*.|.*./video-clips/.*.|.*./videos/.*.|https://sfstate-primo.hosted.exlibrisgroup.com/.*.|.*./podcasts/.*.|.*./media/.*.|https://presidio.at.sfsu.edu/media/.*.|.*.sfsu.zoom.us.*.|.*.diva.sfsu.edu.*.|.*./v/.*.|.*.facebook.com/watch/\?v.*.)|"
                           "(.*\.pdf|.*\.docx|.*\.ppt|.*\.doc|.*\.pptx|.*\.jpg|.*\.rtf|.*\.pages|.*\.rar|.*\.xlsx|.*\.zip)", re.IGNORECASE)
 
 is_moodle_file = re.compile(".*.mod_resource|.*.mod_folder", re.IGNORECASE)
@@ -72,7 +75,11 @@ get_folder_id = re.compile("[0-9]{5,6}/mod_folder/")
 
 basic_url_check = re.compile("http.*.|https.*.")
 
-excepted_from_head_check = re.compile("https://presidio.at.sfsu.edu/media/.*.")
+excepted_from_head_check = re.compile("32634535eytg54yg354g34tg324g34tg") #https://presidio.at.sfsu.edu/media/.*.
+
+
+
+
 
 
 def identify_service_type(link):
@@ -90,11 +97,17 @@ def identify_service_type(link):
 
 
 def scrub_links(link):
+    try:
 
-    if links_to_remove.match(link):
-        return link
-    else:
+        if links_to_remove.match(link):
+            return link
+        else:
+            return None
+    except TypeError:
         return None
+
+print(scrub_links("https://ilearn.support.at.sfsu.edu/ay2021/mod/url/view.php?id=300649"))
+
 
 def do_not_head(link):
     try:
@@ -104,6 +117,11 @@ def do_not_head(link):
             return False
     except TypeError:
         return False
+
+
+
+
+
 
 def check_valid_url(link):
 
@@ -130,6 +148,9 @@ def identify_resource_type(link):
     else:
         return "Other"
 
+
+
+
 def identify_link_id(link):
     try:
         url_id_num = url_id.search(link)
@@ -144,7 +165,7 @@ def identify_if_moodle(link):
         return False
 
 def identify_link(link):
-    group_regex = re.compile(moodle_content_id_regex, re.IGNORECASE)
+    group_regex = moodle_content_id_regex
     group = group_regex.match(link)
     print("LINKKKKK", link)
     if group:
@@ -176,3 +197,4 @@ def identify_folder_id(link):
         return match.group(0).split("/", 1)[0]
     else:
         return None
+

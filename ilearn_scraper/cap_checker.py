@@ -1,3 +1,4 @@
+#!/home/daniel/dev/py36-venv/bin/python3
 import sys
 sys.path.append("/home/daniel/dev/py36-venv/dev")
 sys.path.append("C:\\Users\\DanielPC\\Desktop\\Servers\\amp_dprc_db_server")
@@ -17,7 +18,7 @@ def cap_checker_function():
     if ilearn_connection == False:
         return
 
-    ilearn_page_ids = get_all_course_ilearn_ids("fa20")
+    ilearn_page_ids = get_all_course_ilearn_ids("su21")
 
     if ilearn_page_ids is not None:
 
@@ -28,6 +29,7 @@ def cap_checker_function():
             course_section_content = ilearn_page.get_all_content()
 
             add_ilearn_course_name(ilearn_page.course_name, page_id[0])
+
 
             # check_or_commit_course(page_id[1], ilearn_page.course_name, page_id[0], "sp19", page_id[2]) //depreciated
 
@@ -41,12 +43,13 @@ def cap_checker_function():
 
 
                         # commit_ilearn_video_content(resource['title'], fix.fix_mediasite_link(resource['link']), page_id[1], cap_status["cap-state"], section['section']) //depreciated
-                        add_scraped_videos(resource['title'], fix.fix_mediasite_link(resource['link']), page_id[1], None, page_id[0], section['section'], "fa20")
+                        add_scraped_videos(resource['title'], fix.fix_mediasite_link(resource['link']), page_id[1], None, page_id[0], section['section'], "su21", resource['hidden'])
 
 
 def cap_check_single(page_id, course_gen_id):
 
     open_iLearn_connection()
+
 
     ilearn_page = IlearnCoursePage(page_id)
 
@@ -64,47 +67,12 @@ def cap_check_single(page_id, course_gen_id):
                 #                                   verify=False)
                 # cap_status = False
 
-
-                add_scraped_videos(resource['title'], fix.fix_mediasite_link(resource['link']), page_id, False, course_gen_id, section['section'], 'su20')
+                add_scraped_videos(resource['title'], fix.fix_mediasite_link(resource['link']), page_id, None, course_gen_id, section['section'], 'su21', resource['hidden'])
                 pass
-
-
-
-
-
-# classes = [("sp20CJ46001", "16646"),
-#            ("sp20CJ47001", "17024"),
-#            ("sp20CJ47501", "16647"),
-#            ("sp20CJ52002", "16738"),
-#            ("sp20CAD41002", "14865"),
-#            ("sp20CAD62503", "17445"),
-#            ("sp20CHEM11528", "15160"),
-#            ("sp20CHEM11529", "15174"),
-#            ("sp20CHEM11530", "15188"),
-#            ("sp20EED61601", "15835"),
-#            ("sp20EED64501", "13515"),
-#            ("sp20EED70103", "16246"),
-#            ("sp20FCS22301", "9038"),
-#            ("sp20MATH12405", "13317"),
-#            ("sp20PHYS11103", "13866"),
-#            ("sp20PHYS11211", "13781"),
-#            ("sp20PSY45102", "17462"),
-#            ("sp20PSY45201", "11640"),
-#            ("sp20PSY69001", "11643"),
-#            ("sp20SOC24501", "9258"),
-#            ("sp20SPED33002", "13170"),
-#            ("sp20SPED63003", "17337"),
-#            ("sp20SPED73701", "11811"),
-#            ("sp20SPED77401", "13698"),
-#            ("sp20SPED78801", "11823"),
-#            ("SP20PA71501", "14831"),
-#            ("SP20BIOL613GW05", "12116")
-#            ]
-#
-# cap_check_single('18679', 'suCLAS28001')
 
 
 if __name__ == '__main__':
     cap_checker_function()
 
 
+# cap_check_single("10315", "sp21HIST45001")

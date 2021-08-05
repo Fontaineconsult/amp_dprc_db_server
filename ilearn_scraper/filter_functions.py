@@ -4,7 +4,7 @@ import ilearn_scraper.request_functions as rf
 from bs4 import BeautifulSoup
 import os, yaml
 import mimetypes
-
+from ilearn_scraper.request_functions import open_iLearn_connection
 
 
 ##! need workaround for servers not configured to return HEAD requests
@@ -96,31 +96,41 @@ class IlearnResource(InternalResource):
 
     def __call__(self, *args, **kwargs):
 
-        if self.downloadable:
-            resource = rf.download_ilearn_resource(self.resource_link)
-            if resource.status_code == 200:
-                return {"resource": resource,
-                        'title': self.resource_title,
-                        'link': self.resource_link,
-                        'resource-type': self.resource_type,
-                        'file-type': self.file_type,
-                        'folder': self.folder,
-                        'extension': self.file_extension,
-                        'service_type': self.service_type,
-                        'hidden': self.hidden}
-            else:
-                return {"resource": self.resource_link, "code": self.resource_header.status_code}
-        else:
-            return {'resource': self.resource_link,
-                    'title': self.resource_title,
-                    'link': self.resource_link,
-                    'resource-type': self.resource_type,
-                    'file-type': self.file_type,
-                    'folder': self.folder,
-                    'extension': self.file_extension,
-                    'service_type': self.service_type,
-                    'hidden': self.hidden}
-        pass
+        return {'resource': self.resource_link,
+                'title': self.resource_title,
+                'link': self.resource_link,
+                'resource-type': self.resource_type,
+                'file-type': self.file_type,
+                'folder': self.folder,
+                'extension': self.file_extension,
+                'service_type': self.service_type,
+                'hidden': self.hidden}
+
+        # if self.downloadable:
+        #     resource = rf.download_ilearn_resource(self.resource_link)
+        #     if resource.status_code == 200:
+        #         return {"resource": resource,
+        #                 'title': self.resource_title,
+        #                 'link': self.resource_link,
+        #                 'resource-type': self.resource_type,
+        #                 'file-type': self.file_type,
+        #                 'folder': self.folder,
+        #                 'extension': self.file_extension,
+        #                 'service_type': self.service_type,
+        #                 'hidden': self.hidden}
+        #     else:
+        #         return {"resource": self.resource_link, "code": self.resource_header.status_code}
+        # else:
+        #     return {'resource': self.resource_link,
+        #             'title': self.resource_title,
+        #             'link': self.resource_link,
+        #             'resource-type': self.resource_type,
+        #             'file-type': self.file_type,
+        #             'folder': self.folder,
+        #             'extension': self.file_extension,
+        #             'service_type': self.service_type,
+        #             'hidden': self.hidden}
+        # pass
 
     def __str__(self):
 
@@ -156,7 +166,6 @@ def get_folder_links(link):
         try:
             link_span = link.select_one("span[class*='fp-filename']").text
             link_text = link_span.next_element
-            print(link, link_text)
         except AttributeError:
             link_text = None
 
@@ -168,7 +177,6 @@ def get_folder_links(link):
 def search_raw_text_for_video(section_text):
 
     section_text = section_text.findAll(text=True)
-    print("TEXT", section_text)
     if section_text is not None:
         print("_____")
         for each_string in section_text:
@@ -265,10 +273,7 @@ def get_mod_resource_page_link(link):
 
     if div_main is not None:
 
-
         secondary_link = div_main.find("a", href=True)
-
-
         if not secondary_link:  # look for iFrame if not 'a' tag
             iframe_tag = div_main.find("iframe")
 
@@ -301,35 +306,59 @@ def get_iframe_video(link):
 
 
 def get_assign_resource_page_link(link):
+    print("THIS IS AN ASSIGNMENT", link)
     mod_url_page_html = rf.get_ilearn_resource(link)
-    div_main = BeautifulSoup(mod_url_page_html, "lxml").find("div", {"id": "intro"})
-    if div_main is not None:
-        secondary_link = div_main.find("a", href=True)
 
-        if not secondary_link:  # look for iFrame if not 'a' tag
-            iframe_tag = div_main.find("iframe")
-            if iframe_tag:
-                return iframe_tag['src']
-            else:
-                return None
-        if secondary_link:
-            return secondary_link['href']
+    div_main = BeautifulSoup(mod_url_page_html, "lxml").find("div", {"role": "main"})
+    if div_main is not None:
+        secondary_link = div_main.find_all("a", href=True)
+
+        iframe_tag = div_main.find_all("iframe")
+
+
+        all_page_links = []
+
+        for link in iframe_tag:
+            print("LINKKK", link)
+            if regexs.scrub_links(link['src']) is None:
+                all_page_links.append(link['src'])
+
+        for link in secondary_link:
+            if regexs.scrub_links(link['href']) is None:
+                all_page_links.append(link['href'])
+
+
+        print(all_page_links)
+
+
+        if len(all_page_links) > 0:
+            return all_page_links
         else:
             return None
-    else:
-        return None
+
+
+    #     if not secondary_link:  # look for iFrame if not 'a' tag
+    #
+    #         iframe_tag = div_main.find("iframe")
+    #
+    #         if iframe_tag:
+    #             return iframe_tag['src']
+    #         else:
+    #             return None
+    #     if secondary_link:
+    #         return secondary_link['href']
+    #     else:
+    #         return None
+    # else:
+    #     return None
 
 
 def get_header(link):
     allowed_codes = [200, 300, 301, 302, 303]
     if link is not None:
-
         header = rf.get_resources_header(link)
 
-
         if header is not None:
-            print(link, header.headers, header.status_code)
-
             if header.status_code in allowed_codes:
 
                 return header
@@ -381,15 +410,13 @@ def initial_resource_search(link):
 
 
     header = get_header(link)
-
+    print(link)
     if header is not None:
         if header.status_code == 303 or header.status_code == 302 or header.status_code == 301:
 
             header_resource = header.headers['Location']
+
             if header_resource is not None:
-
-                print("headresrouce", header_resource, type(header_resource))
-
                 if link_buffer(header_resource):
                     if regexs.check_valid_url(header_resource):
                         link_type = regexs.identify_link(link)
@@ -456,18 +483,30 @@ def master_link_sorter(section_links):
     raw_resource_links = []
 
     while len(working_list) > 0:
-
+        print("DSFSDFSD", working_list)
         for resource in working_list:
 
             resource_url = resource[0]  # url
             resource_title = resource[1]  # title
             resource_hidden = resource[2]  # hidden state
 
-            if resource_url is not None and regexs.do_not_head(resource_url) and regexs.scrub_links(resource_url) is not None: # removes troublesome links that we know we still want
+            if resource_url is not None and regexs.do_not_head(resource_url): # removes troublesome links that we know we still want
 
                 working_list.remove(resource)
                 # raw_resource_links.append(resouce) ##! find a way to store these links elsewhere
                 continue
+
+            print("Scrubber", regexs.scrub_links(resource_url))
+
+            try:
+                if regexs.scrub_links(resource_url) is not None:
+                    working_list.remove(resource)
+
+                    continue
+            except TypeError:
+                working_list.remove(resource)
+                continue
+
 
             if regexs.check_valid_url(resource_url):
 
@@ -480,6 +519,7 @@ def master_link_sorter(section_links):
                         raw_resource_links.append( (search[0], resource_title, resource_hidden) )
 
                     elif search[2] == 'url':
+                        print("GET MOD URL LINK", resource)
                         working_list.remove(resource)
                         new_link = get_mod_resource_page_link(search[0])
                         if new_link is not None:
@@ -503,9 +543,13 @@ def master_link_sorter(section_links):
 
                     elif search[2] == 'assignment':
                         working_list.remove(resource)
-                        new_link = get_assign_resource_page_link(resource_url)
-                        if new_link is not None:
-                            working_list.append( (new_link, resource_title, resource_hidden))
+                        print("ASSIIIGGNNNINGGG", resource)
+                        new_links = get_assign_resource_page_link(resource_url)
+                        if new_links is not None:
+                            # need to get actual titles from assignment page
+                            for each in new_links:
+                                if regexs.scrub_links(each) is None:
+                                    working_list.append( (each, resource_title, resource_hidden))
 
                     elif search[2] == 'resource':
                         if search[1] == 200:
@@ -538,3 +582,5 @@ def master_link_sorter(section_links):
                 working_list.remove(resource) # removes invalid URLs
     return raw_resource_links
 
+# open_iLearn_connection()
+# print(get_mod_resource_page_link('https://ilearn.support.at.sfsu.edu/ay2021/mod/url/view.php?id=74776'))

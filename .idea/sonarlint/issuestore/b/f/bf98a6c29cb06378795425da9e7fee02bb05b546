@@ -1,0 +1,17 @@
+
+python:S1542Ø"_Rename function "commit_myDPRC_course_data" to match the regular expression ^[a-z_][a-z0-9_]*$.(Ü“õ·8Îë‰¬ÿ.
+\python:S5754Á"<Specify an exception class to catch or reraise the exception(ˆÊÉ·8Îë‰¬ÿ.
+<python:S2772"Remove this unneeded "pass".(ã‘Û¾8Îë‰¬ÿ.
+cpython:S1481ú">Remove the unused local variable "check_if_instructor_exists".(’¾»ôùÿÿÿÿ8Îë‰¬ÿ.
+Œpython:S1542Ð"gRename function "commit_myDPRC_student_enrollement" to match the regular expression ^[a-z_][a-z0-9_]*$.(õìˆ¡üÿÿÿÿ8Îë‰¬ÿ.
+ƒpython:S1542¼"^Rename function "clear_myDPRC_enroll_data" to match the regular expression ^[a-z_][a-z0-9_]*$.(èÍ¦‰þÿÿÿÿ8Îë‰¬ÿ.
+Tpython:S1481\"0Remove the unused local variable "course_query".(ìþøÞúÿÿÿÿ8Îë‰¬ÿ.
+‡python:S117Ó"cRename this local variable "myDPRC_enrollement" to match the regular expression ^[_a-z][a-z0-9_]*$.(†ÄàÜýÿÿÿÿ8Îë‰¬ÿ.
+<python:S2772·"Remove this unneeded "pass".(ã‘Û¾8Îë‰¬ÿ.
+[python:S5754m"<Specify an exception class to catch or reraise the exception(ˆÊÉ·8Îë‰¬ÿ.
+[python:S5754""<Specify an exception class to catch or reraise the exception(ˆÊÉ·8Îë‰¬ÿ.
+tpython:S3776£"TRefactor this function to reduce its Cognitive Complexity from 18 to the 15 allowed.(×Ø·À8Îë‰¬ÿ.
+\python:S5754Ë"<Specify an exception class to catch or reraise the exception(ˆÊÉ·8Îë‰¬ÿ.
+[python:S5754T"<Specify an exception class to catch or reraise the exception(ˆÊÉ·8Îë‰¬ÿ.
+Xpython:S1481H"4Remove the unused local variable "instructor_query".(¼³¹¬ûÿÿÿÿ8Îë‰¬ÿ.
+~python:S1542Æ"^Rename function "clear_myDPRC_course_data" to match the regular expression ^[a-z_][a-z0-9_]*$.(ÀÖ8Îë‰¬ÿ.

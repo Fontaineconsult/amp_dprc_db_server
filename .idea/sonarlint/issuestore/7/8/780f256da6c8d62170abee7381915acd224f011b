@@ -1,0 +1,14 @@
+
+qpython:S1192È"QDefine a constant instead of duplicating this literal '-csearch_path={}' 3 times.(ıÛÀÀ8ŸÜÃ¬ÿ.
+\python:S5754Ğ"<Specify an exception class to catch or reraise the exception(ˆÊÉ·8–£ä«ÿ.
+<python:S2772Ò"Remove this unneeded "pass".(ã‘Û¾8–£ä«ÿ.
+•python:S101ò"qRename class "myDPRCStudentEnrollemet" to match the regular expression ^_?([A-Z_][a-zA-Z0-9]*|[a-z_][a-z0-9_]*)$.(—¶àúÿÿÿÿ8–£ä«ÿ.
+[python:S5754"<Specify an exception class to catch or reraise the exception(ˆÊÉ·8–£ä«ÿ.
+xpython:S117Ì"ZRename this local variable "DBsession" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ö„¥.8–£ä«ÿ.
+~python:S1192º"YDefine a constant instead of duplicating this literal "postgresql://{}:{}@{}/{}" 4 times.(¤™Ò³ıÿÿÿÿ8ù“¼¬ÿ.
+Œpython:S101û"mRename class "myDPRCRawCourseList" to match the regular expression ^_?([A-Z_][a-zA-Z0-9]*|[a-z_][a-z0-9_]*)$.(¼ûÑ8–£ä«ÿ.
+\python:S5754‚"<Specify an exception class to catch or reraise the exception(ˆÊÉ·8–£ä«ÿ.
+tpython:S1192ç"TDefine a constant instead of duplicating this literal "captioning_media.id" 3 times.(ÂÑ™•8–£ä«ÿ.
+\python:S5754ß"<Specify an exception class to catch or reraise the exception(ˆÊÉ·8ŸÜÃ¬ÿ.
+tpython:S1192g"UDefine a constant instead of duplicating this literal 'employee.employee_id' 3 times.(Ûá¿„8–£ä«ÿ.
+<python:S2772á"Remove this unneeded "pass".(ã‘Û¾8ŸÜÃ¬ÿ.

@@ -116,7 +116,6 @@ def get_resources_header(resource_url, *session):
     try:
         print("trying to get head for", resource_url)
         header = session.head(resource_url, verify=False, timeout=10)
-        print(header.headers, resource_url)
         return header
     except (requests.exceptions.SSLError,
             requests.exceptions.ConnectionError,
@@ -131,7 +130,6 @@ def get_resources_header(resource_url, *session):
 
 @iLearn_login_session
 def get_ilearn_page(resource_url, *session):
-    print(resource_url)
     session = session[0]
     resource = session.get(base_course_url + resource_url, verify=False)
     return resource.content
@@ -174,3 +172,4 @@ def download_ilearn_resource(resource_url, *session):
 
 def get_mediasite_page(resource_url):
     return global_login_session.get(resource_url, verify=False)
+

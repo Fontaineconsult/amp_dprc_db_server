@@ -1,0 +1,6 @@
+
+{python:S117A"dRename this local variable "IlearnCourseSection" to match the regular expression ^[_a-z][a-z0-9_]*$.(è€©ˆ
+{python:S1173"_Rename this local variable "eReserve_block" to match the regular expression ^[_a-z][a-z0-9_]*$.(úê‚Øüÿÿÿÿ
+rpython:S116"VRename this field "eReserve_files" to match the regular expression ^[_a-z][_a-z0-9]*$.(­†¦Ôøÿÿÿÿ
+jpython:S1002"SRename method "check_eReserves" to match the regular expression ^[a-z_][a-z0-9_]*$.(û‰ñš
+{python:S117N"dRename this local variable "IlearnCourseSection" to match the regular expression ^[_a-z][a-z0-9_]*$.(è€©ˆ

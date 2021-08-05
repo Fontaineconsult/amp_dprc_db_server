@@ -1,0 +1,7 @@
+
+Upython:S112n">Replace this generic exception class with a more specific one.( Û¼Ï
+rpython:S1542f"ZRename function "iLearn_login_session" to match the regular expression ^[a-z_][a-z0-9_]*$.(Ç„ß 
+Tpython:S5754~"<Specify an exception class to catch or reraise the exception(ˆÊÉ·
+Tpython:S5754;"<Specify an exception class to catch or reraise the exception(ˆÊÉ·
+Tpython:S5754"<Specify an exception class to catch or reraise the exception(ˆÊÉ·
+tpython:S1542"\Rename function "open_iLearn_connection" to match the regular expression ^[a-z_][a-z0-9_]*$.(˜„¶ï

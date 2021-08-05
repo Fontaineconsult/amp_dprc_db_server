@@ -1,0 +1,15 @@
+
+5python:S2772Û"Remove this unneeded "pass".(ã‘Û¾
+?python:S3626Ö"Remove this redundant continue.(À–¬ˆ8İíÈùÇ.
+ƒpython:S1871¸"cEither merge this branch with the identical one on line "518" or change one of the implementations.(ù§èŒ8İíÈùÇ.
+Mpython:S1481œ"/Remove the unused local variable "folder_name".(°¥ñŠÿÿÿÿÿ
+Tpython:S1066¬"/Merge this if statement with the enclosing one.(šç±©ùÿÿÿÿ8İíÈùÇ.
+Tpython:S5754G"<Specify an exception class to catch or reraise the exception(ˆÊÉ·
+ƒpython:S1871À"cEither merge this branch with the identical one on line "518" or change one of the implementations.(ù§èŒ8İíÈùÇ.
+tpython:S3776™"TRefactor this function to reduce its Cognitive Complexity from 41 to the 15 allowed.(ç£½·8İíÈùÇ.
+rpython:S3776Æ"TRefactor this function to reduce its Cognitive Complexity from 23 to the 15 allowed.(”¤’ªşÿÿÿÿ
+tpython:S3776Û"TRefactor this function to reduce its Cognitive Complexity from 90 to the 15 allowed.(“ Ùö8İíÈùÇ.
+Npython:S1481±"6Remove the unused local variable "presidio_container".(°¾‹8
+qpython:S3776,"TRefactor this function to reduce its Cognitive Complexity from 19 to the 15 allowed.(Ñ‘ô§üÿÿÿÿ
+Lpython:S1066S"/Merge this if statement with the enclosing one.(—Š´³üÿÿÿÿ
+Upython:S5754”"<Specify an exception class to catch or reraise the exception(ˆÊÉ·

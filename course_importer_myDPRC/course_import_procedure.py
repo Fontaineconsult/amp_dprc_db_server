@@ -80,6 +80,8 @@ def import_all_courses(term_code):
 
 def add_items_to_tables(semester):
     dbase_functions.refresh_instructor_table()
+    # make sure to run DB migration at beginning of semester
+    # update target db in database_vars.yaml it should be this semester
     # Term code must be set in backend under the 'current_enrollement' table def.
     # semester must be set in 'current_student_courses' table def
     dbase_functions.add_courses_to_course_table(semester)
@@ -88,6 +90,6 @@ def add_items_to_tables(semester):
 
 
 ## Make sure these are set correctly
-import_student_enrollement('2207')
-import_all_courses('2207')
-add_items_to_tables('fa20')
+import_student_enrollement('2215')
+import_all_courses('2215')
+add_items_to_tables('su21')
