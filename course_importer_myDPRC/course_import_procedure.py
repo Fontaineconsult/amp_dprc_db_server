@@ -5,8 +5,8 @@ import itertools
 
 from amp_dprc_database import dbase_functions
 
-course_enrollement_csv = r"C:\Users\DanielPC\Desktop\Servers\amp_dprc_db_server\course_importer_myDPRC\Courses.txt"
-course_list_csv = r"C:\Users\DanielPC\Desktop\Servers\amp_dprc_db_server\course_importer_myDPRC\Classlist.txt"
+course_enrollement_csv = r"C:\Users\913678186\IdeaProjects\amp_dprc_db_server\course_importer_myDPRC\Courses.txt"
+course_list_csv = r"C:\Users\913678186\IdeaProjects\amp_dprc_db_server\course_importer_myDPRC\Classlist.txt"
 
 
 
@@ -90,6 +90,6 @@ def add_items_to_tables(semester):
 
 
 ## Make sure these are set correctly
-import_student_enrollement('2215')
-import_all_courses('2215')
-add_items_to_tables('su21')
+import_student_enrollement('2217')
+import_all_courses('2217')
+add_items_to_tables('fa21')

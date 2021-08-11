@@ -2,8 +2,15 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
-      <sshConfig authType="PASSWORD" host="130.212.104.17" id="71c9acca-91a6-4e7a-9bd9-a230760cacf9" port="22" customName="dprc-amp" nameFormat="CUSTOM" username="daniel" />
-      <sshConfig authType="PASSWORD" host="130.212.104.17" id="2a56de8f-7199-4c78-813c-3faf85395fa7" port="22" customName="dprc-amp" nameFormat="CUSTOM" username="daniel" />
+      <sshConfig authType="PASSWORD" host="130.212.104.17" id="71c9acca-91a6-4e7a-9bd9-a230760cacf9" port="22" customName="dprc-amp" nameFormat="CUSTOM" username="daniel">
+        <option name="customName" value="dprc-amp" />
+      </sshConfig>
+      <sshConfig authType="PASSWORD" host="130.212.104.17" id="2a56de8f-7199-4c78-813c-3faf85395fa7" port="22" customName="dprc-amp" nameFormat="CUSTOM" username="daniel">
+        <option name="customName" value="dprc-amp" />
+      </sshConfig>
+      <sshConfig authType="PASSWORD" connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="130.212.104.17" id="17bbbf0e-8691-4f90-b845-c0f6181903de" port="22" customName="dprc-amp" nameFormat="CUSTOM">
+        <option name="customName" value="dprc-amp" />
+      </sshConfig>
     </configs>
   </component>
 </project>

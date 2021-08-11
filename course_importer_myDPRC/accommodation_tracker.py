@@ -6,7 +6,7 @@ import amp_dprc_database.dbase_functions as db
 myDPRC query must come from Manage Accommodations > List Accommodation Requests 
 """
 
-video_accomm = "C:\\Users\\DanielPC\\Desktop\\Servers\\amp_dprc_db_server\\course_importer_myDPRC\\export (7).csv"
+video_accomm = "C:\\Users\\913678186\\IdeaProjects\\amp_dprc_db_server\\course_importer_myDPRC\\export.csv"
 
 
 course_ids = []
@@ -42,7 +42,7 @@ def create_course_gen_id(semester):
 
 
 
-create_course_gen_id("su21")
+create_course_gen_id("fa21")
 
 
 db.clear_video_accomm_status()

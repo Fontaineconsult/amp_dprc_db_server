@@ -439,12 +439,12 @@ class CaptionStudentCoursesView(Base):
 
 def get_dbase_session(database_var="database"):
     config = load_config()
-    database = "postgresql://{}:{}@{}/{}".format(config['username'],
+    database = "postgresql://{}:{}@{}/{}".format(config['user'],
                                              config['password'],
                                              config['server'],
                                              config['database'])
 
-    dev_database = "postgresql://{}:{}@{}/{}".format(config['username'],
+    dev_database = "postgresql://{}:{}@{}/{}".format(config['user'],
                                                      config['password'],
                                                      config['server'],
                                                      config['dev_database'])
@@ -489,12 +489,14 @@ def get_dbase_session(database_var="database"):
 if __name__ == '__main__':
 
     config = load_config()
-    database = "postgresql://{}:{}@{}/{}".format(config['username'],
+    print(config)
+    print(config['user'])
+    database = "postgresql://{}:{}@{}/{}".format(config['user'],
                                                  config['password'],
                                                  config['server'],
                                                  config['database'])
 
-    dev_database = "postgresql://{}:{}@{}/{}".format(config['username'],
+    dev_database = "postgresql://{}:{}@{}/{}".format(config['user'],
                                                  config['password'],
                                                  config['server'],
                                                  config['dev_database'])

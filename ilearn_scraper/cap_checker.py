@@ -18,7 +18,7 @@ def cap_checker_function():
     if ilearn_connection == False:
         return
 
-    ilearn_page_ids = get_all_course_ilearn_ids("su21")
+    ilearn_page_ids = get_all_course_ilearn_ids("fa21")
 
     if ilearn_page_ids is not None:
 
@@ -43,7 +43,7 @@ def cap_checker_function():
 
 
                         # commit_ilearn_video_content(resource['title'], fix.fix_mediasite_link(resource['link']), page_id[1], cap_status["cap-state"], section['section']) //depreciated
-                        add_scraped_videos(resource['title'], fix.fix_mediasite_link(resource['link']), page_id[1], None, page_id[0], section['section'], "su21", resource['hidden'])
+                        add_scraped_videos(resource['title'], fix.fix_mediasite_link(resource['link']), page_id[1], None, page_id[0], section['section'], "fa21", resource['hidden'])
 
 
 def cap_check_single(page_id, course_gen_id):
