@@ -67,12 +67,12 @@ def cap_check_single(page_id, course_gen_id):
                 #                                   verify=False)
                 # cap_status = False
 
-                add_scraped_videos(resource['title'], fix.fix_mediasite_link(resource['link']), page_id, None, course_gen_id, section['section'], 'su21', resource['hidden'])
+                add_scraped_videos(resource['title'], fix.fix_mediasite_link(resource['link']), page_id, None, course_gen_id, section['section'], 'fa21', resource['hidden'])
                 pass
 
 
-if __name__ == '__main__':
-    cap_checker_function()
+# if __name__ == '__main__':
+#     cap_checker_function()
 
 
-# cap_check_single("10315", "sp21HIST45001")
+cap_check_single("7723", "fa21CAD45004")

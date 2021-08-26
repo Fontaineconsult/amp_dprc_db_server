@@ -15,10 +15,10 @@ folders_group = "((resource/view.php\?id=[0-9]{0,7})" \
 
 
 # direct download links on main iLearn page. mod resource can be folder
-first_level_resource_links = re.compile(r"(https://ilearn.support.at.sfsu.edu/ay1920/mod/)" + first_level_group)
+first_level_resource_links = re.compile(r"(https://ilearn.support.at.sfsu.edu/ay2122/mod/)" + first_level_group)
 
 # links to another page with a download link
-first_level_url_links = re.compile(r"(https://ilearn.support.at.sfsu.edu/ay1920/mod/)" + url_links_group)
+first_level_url_links = re.compile(r"(https://ilearn.support.at.sfsu.edu/ay2122/mod/)" + url_links_group)
 
 direct_external_links = re.compile("https://www.youtube.com/watch\?v=.{11}|"
                                    "https://www.dailymotion.com/video/.{7}")
@@ -30,7 +30,7 @@ folder_links = re.compile(r"(https://ilearn.support.at.sfsu.edu/ay2021/mod/)" + 
 
 
 
-links_to_remove = re.compile("(https://ilearn.support.at.sfsu.edu/ay2021/mod/)("
+links_to_remove = re.compile("(https://ilearn.support.at.sfsu.edu/ay2122/mod/)("
                              "(turnitintooltwo/.+)|"
                              "(attendance/.+)|"
                              "(forum/.+)|"
@@ -50,12 +50,12 @@ links_to_remove = re.compile("(https://ilearn.support.at.sfsu.edu/ay2021/mod/)("
 
 
 
-moodle_content_id_regex = re.compile("https://ilearn.support.at.sfsu.edu/ay2021/mod/(((url|mediasite)|"
+moodle_content_id_regex = re.compile("https://ilearn.support.at.sfsu.edu/ay2122/mod/(((url|mediasite)|"
                           "(page)|(assign)|(folder)|(resource)|(presidioresource))/view.php\?id=[0-9]{0,7})|"
                           "(.*\.pdf|.*\.docx|.*\.ppt|.*\.doc|.*\.pptx|.*\.jpg|.*\.rtf|.*\.m4a|.*\.pages|.*\.rar|.*\.xlsx|.*\.zip)|"
                           "(https://diva.sfsu.edu/bundles/[0-9]{5,8}/download)|https://presidio.at.sfsu.edu/media/.*.", re.IGNORECASE)
 
-first_level_mediasite_links = re.compile("https://ilearn.support.at.sfsu.edu/ay2021/mod/mediasite/view.php\?id=.+")
+first_level_mediasite_links = re.compile("https://ilearn.support.at.sfsu.edu/ay2122/mod/mediasite/view.php\?id=.+")
 
 
 url_id = re.compile("[0-9]{5,7}")
